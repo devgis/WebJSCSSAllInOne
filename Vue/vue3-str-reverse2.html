@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+<div id="app">
+  <p>原始字符串: {{ message }}</p>
+  <p>计算后反转字符串: {{ reversedMessage }}</p>
+</div>
+    
+<script>
+const app = {
+  data() {
+    return {
+      message: 'RUNOOB!!'
+    }
+  },
+  //我们可以使用 methods 来替代 computed，效果上两个都是一样的，但是 computed 是基于它的依赖缓存，只有相关依赖发生改变时才会重新取值。而使用 methods ，在重新渲染的时候，函数总会重新调用执行。
+  computed: {
+    // 计算属性的 getter
+    reversedMessage: function () {
+      // `this` 指向 vm 实例
+      return this.message.split('').reverse().join('')
+    },
+    //computed 属性默认只有 getter ，不过在需要时你也可以提供一个 setter ：
+    site: {
+      // getter
+      get: function () {
+        return this.name + ' ' + this.url
+      },
+      // setter
+      set: function (newValue) {
+        var names = newValue.split(' ')
+        this.name = names[0]
+        this.url = names[names.length - 1]
+      }
+    }
+  }
+,
+  methods: {
+  reversedMessage2: function () {
+    return this.message.split('').reverse().join('')
+  }
+}
+}
+ 
+Vue.createApp(app).mount('#app')
+</script>
+</body>
+</html>

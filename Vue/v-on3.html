@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+<div id="app">
+  <button @click="say('hi')">Say hi</button>
+  <button @click="say('what')">Say what</button>
+</div>
+
+<script>
+const app = {
+  data() {
+   
+  },
+  methods: {
+    say(message) {
+      alert(message)
+    }
+  }
+}
+
+Vue.createApp(app).mount('#app')
+</script>
+</body>
+</html>

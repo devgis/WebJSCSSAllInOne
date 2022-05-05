@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="value in object">
+    {{ value }}
+    </li>
+  </ul>
+
+  <ul>
+    <li v-for="(value, key) in object">
+    {{ key }} : {{ value }}
+    </li>
+  </ul>
+
+  <ul>
+    <li v-for="(value, key, index) in object">
+     {{ index }}. {{ key }} : {{ value }}
+    </li>
+  </ul>
+
+  <ul>
+    <li v-for="n in 10">
+     {{ n }}
+    </li>
+  </ul>
+</div>
+ 
+<script>
+const app = {
+  data() {
+    return {
+      object: {
+        name: '菜鸟教程',
+        url: 'http://www.runoob.com',
+        slogan: '学的不仅是技术，更是梦想！'
+      }
+    }
+  }
+}
+ 
+Vue.createApp(app).mount('#app')
+</script>
+</body>
+</html>

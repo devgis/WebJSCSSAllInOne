@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">反转字符串</button>
+    <!-- 缩写 -->
+    <!-- <a @click="doSomething"></a> -->
+
+</div>
+    
+<script>
+const app = {
+  data() {
+    return {
+      message: 'Runoob!'
+    }
+  },
+  methods: {
+    reverseMessage() {
+      this.message = this.message
+        .split('')
+        .reverse()
+        .join('')
+    }
+  }
+}
+ 
+Vue.createApp(app).mount('#app')
+</script>
+</body>
+</html>

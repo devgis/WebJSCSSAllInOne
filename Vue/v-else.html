@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+<div id="app">
+    <div v-if="Math.random() > 0.5">
+      随机数大于 0.5
+    </div>
+    <div v-else>
+      随机数小于等于 0.5
+    </div>
+</div>
+    
+<script>
+Vue.createApp(app).mount('#app')
+</script>
+</body>
+</html>

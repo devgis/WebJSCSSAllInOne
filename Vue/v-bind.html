@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="https://unpkg.com/vue@next"></script>
+<style>
+.class1{
+  background: #444;
+  color: #eee;
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <label for="r1">修改颜色</label><input type="checkbox" v-model="use" id="r1">
+  <br><br>
+  <div v-bind:class="{'class1': use}">
+    v-bind:class 指令
+  </div>
+  <!-- 缩写 -->
+  <!-- <a :href="url"></a> -->
+
+</div>
+
+<script>
+const app = {
+  data() {
+    return {
+      use: false
+    }
+  }
+}
+ 
+Vue.createApp(app).mount('#app')
+</script>
+</body>
+</html>

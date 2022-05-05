@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+<div id="todo-list-example">
+  <form v-on:submit.prevent="addNewTodo">
+    <label for="new-todo">添加 todo</label>
+    <input
+      v-model="newTodoText"
+      id="new-todo"
+      placeholder="例如：明天早上跑步"
+    />
+    <button>添加</button>
+  </form>
+  <ul>
+    <todo-item
+      v-for="(todo, index) in todos"
+      :key="todo.id"
+      :title="todo.title"
+      @remove="todos.splice(index, 1)"
+    ></todo-item>
+  </ul>
+</div>
+ 
+<script>
+const app = Vue.createApp({
+  data() {
+    return {
+      newTodoText: '',
+      todos: [
+        {
+          id: 1,
+          title: '看电影'
+        },
+        {
+          id: 2,
+          title: '吃饭'
+        },
+        {
+          id: 3,
+          title: '上 RUNOOB 学习'
+        }
+      ],
+      nextTodoId: 4
+    }
+  },
+  methods: {
+    addNewTodo() {
+      this.todos.push({
+        id: this.nextTodoId++,
+        title: this.newTodoText
+      })
+      this.newTodoText = ''
+    }
+  }
+})
+
+app.component('todo-item', {
+  template: `
+    <li>
+      {{ title }}
+      <button @click="$emit('remove')">删除</button>
+    </li>
+  `,
+  props: ['title'],
+  emits: ['remove']
+})
+
+app.mount('#todo-list-example')
+</script>
+</body>
+</html>

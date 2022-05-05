@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+<div id="app">
+  <input type="radio" id="runoob" value="Runoob" v-model="picked">
+  <label for="runoob">Runoob</label>
+  <br>
+  <input type="radio" id="google" value="Google" v-model="picked">
+  <label for="google">Google</label>
+  <br>
+  <span>选中值为: {{ picked }}</span>
+</div>
+
+<script>
+const app = {
+  data() {
+    return {
+      picked : 'Runoob'
+    }
+  }
+}
+
+Vue.createApp(app).mount('#app')
+</script>
+</body>
+</html>

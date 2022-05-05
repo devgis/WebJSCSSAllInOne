@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>prop 是子组件用来接受父组件传递过来的数据的一个自定义属性。父组件的数据需要通过 props 把数据传给子组件，子组件需要显式地用 props 选项声明 "prop"：</title>
+<script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+<div id="app">
+  <site-name title="Google"></site-name>
+  <site-name title="Runoob"></site-name>
+  <site-name title="Taobao"></site-name>
+</div>
+ 
+<script>
+const app = Vue.createApp({})
+ 
+app.component('site-name', {
+  props: ['title'],
+  template: `<h4>{{ title }}</h4>`
+})
+ 
+app.mount('#app')
+</script>
+</body>
+</html>
