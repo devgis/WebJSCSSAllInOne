@@ -1,0 +1,62 @@
+jQuery Growl 插件(消息提醒)
+jQuery Growl 插件(消息提醒) 允许您很容易地在一个覆盖层显示反馈消息。消息会在一段时间后自动消失，不需要单击"确定"按钮等。用户也可以通过移动鼠标或点击关闭按钮加快隐藏信息。
+
+该插件目前版本是 1.0.0。
+
+访问 jQuery Growl 官网，下载 jQuery Growl 插件。
+
+效果如下：
+
+
+使用方式
+下载好插件后导入 jQuery 库，jquery.growl.js，jquery.growl.css 三个文件，如：
+
+<script src="https://cdn.bootcss.com/jquery/2.0.2/jquery.min.js" type="text/javascript"></script>
+<script src="https://static.runoob.com/assets/jquery/jquery.growl/javascripts/jquery.growl.js" type="text/javascript"></script>
+<link href="https://static.runoob.com/assets/jquery/jquery.growl/stylesheets/jquery.growl.css" rel="stylesheet" type="text/css" />
+如需使用 Growl 插件，请选择你要设置的显示文本元素，把文本作为参数传递给它：
+
+$.growl({ title: "消息标题", message: "消息内容!" });
+$.growl.error({    title: "错误标题", message: "错误消息内容!" });
+$.growl.notice({title: "提醒标题", message: "提醒消息内容!" });
+$.growl.warning({title: "警告标题", message: "警告消息内容!" });
+有几个可用的默认选项。如果您有兴趣，可以查看下面完整的实例演示。
+
+实例演示
+jQuery Message 插件演示。
+
+$(function() {
+    $.growl({
+      title: "消息标题",
+      message: "消息内容!"
+    });
+ 
+    $('.error').click(function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      return $.growl.error({
+          title: "错误标题",
+        message: "错误消息内容!"
+      });
+    });
+ 
+    $('.notice').click(function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      return $.growl.notice({
+          title: "提醒标题",
+        message: "提醒消息内容!"
+      });
+    });
+    
+    return $('.warning').click(function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      return $.growl.warning({
+          title: "警告标题",
+        message: "警告消息内容!"
+      });
+    });
+});
+
+尝试一下 »

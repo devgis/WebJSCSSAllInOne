@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+    $("span").parent(); //parent() 方法返回被选元素的直接父元素。
+    $("span").parents(); //parents() 方法返回被选元素的所有祖先元素，它一路向上直到文档的根元素 (<html>)。
+    $("span").parents("ul"); //所有 <span> 元素的所有祖先，并且它是 <ul> 元素：
+    $("span").parentsUntil("div"); //parentsUntil() 方法返回介于两个给定元素之间的所有祖先元素。 包含不包含div?
+
+    $("div").children();//children() 方法返回被选元素的所有直接子元素。
+    $("div").children("p.1"); // 下面的例子返回类名为 "1" 的所有 <p> 元素，并且它们是 <div> 的直接子元素：
+    $("div").find("span"); //ind() 方法返回被选元素的后代元素，一路向下直到最后一个后代。
+    $("div").find("*"); //下面的例子返回 <div> 的所有后代：
+
+    $("h2").siblings(); //siblings() 方法返回被选元素的所有同胞元素。
+    $("h2").siblings("p"); //下面的例子返回属于 <h2> 的同胞元素的所有 <p> 元素：
+    $("h2").next(); //返回 <h2> 的下一个同胞元素：
+    $("h2").nextAll();//下面的例子返回 <h2> 的所有跟随的同胞元素：
+    $("h2").nextUntil("h6");//下面的例子返回介于 <h2> 与 <h6> 元素之间的所有同胞元素：
+    //jQuery prev(), prevAll() & prevUntil() 方法
+    //prev(), prevAll() 以及 prevUntil() 方法的工作方式与上面的方法类似，只不过方向相反而已：它们返回的是前面的同胞元素（在 DOM 树中沿着同胞之前元素遍历，而不是之后元素遍历）
+
+    //过滤
+    $("div p").first(); //选取首个 <div> 元素内部的第一个 <p> 元素：
+    $("div p").last();//选择最后一个 <div> 元素中的最后一个 <p> 元素：
+    $("p").eq(1);//索引号从 0 开始，因此首个元素的索引号是 0 而不是 1。下面的例子选取第二个 <p> 元素（索引号 1）：
+    $("p").filter(".url");//例子返回带有类名 "url" 的所有 <p> 元素：
+    $("p").not(".url");// not() 方法与 filter() 相反。下面的例子返回不带有类名 "url" 的所有 <p> 元素：
+});
+
+
+</script>
+</head>
+
+<body>
+<p id="test">这是段落中的 <b>粗体</b> 文本。</p>
+<button id="btn1">显示文本</button>
+<button id="btn2">显示 HTML</button>
+<button id="btn3">显示 val()</button>
+<button id="btn3">显示 attr()</button>
+</body>
+</html>

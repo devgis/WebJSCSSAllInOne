@@ -1,0 +1,39 @@
+jQuery Accordion
+jQuery Accordion 插件用于创建折叠菜单。它通常与嵌套的列表、定义列表或嵌套的 div 一起使用。选项用于指定结构、激活的元素和定制的动画。
+
+该插件现在是 jQuery UI 的一部分，独立的版本不会再更新了。目前版本是 1.6。
+
+jQuery Accordion 官网，jQuery Accordion 插件下载：http://www.runoob.com/try/download/jquery-accordion.zip。
+
+如需了解更多有关 Accordion 的细节，请查看 API 文档 折叠面板部件（Accordion Widget）。
+
+标准
+标准代码如下:
+
+jQuery('#list1a').accordion(); 
+jQuery('#list1b').accordion({ 
+    autoheight: false 
+});
+导航
+带有锚和嵌套列表的无序列表
+
+jQuery('#navigation').accordion({ 
+    active: false, 
+    header: '.head', 
+    navigation: true, 
+    event: 'mouseover', 
+    fillSpace: true, 
+    animated: 'easeslide' 
+});
+带选项
+容器是一个定义列表，标题是 dt，内容是 dd。
+
+jQuery('#list2').accordion({ 
+    event: 'mouseover', 
+    active: '.selected', 
+    selectedClass: 'active', 
+    animated: "bounceslide", 
+    header: "dt" 
+}).bind("change.ui-accordion", function(event, ui) { 
+    jQuery('<div>' + ui.oldHeader.text() + ' hidden, ' + ui.newHeader.text() + ' shown</div>').appendTo('#log'); 
+});

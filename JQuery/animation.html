@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script> 
+
+$(document).ready(function(){
+$("#button1").click(function(){
+  $("div").animate({left:'250px'});
+});
+$("#button2").click(function(){
+    $("div").animate({
+      left:'250px',
+      opacity:'0.5',
+      height:'1500px',
+      width:'1500px'
+    });
+  });
+$("#button4").click(function(){
+  $("div").animate({
+    left:'250px',
+    opacity:'0.5',
+    height:'150px',
+    width:'150px'
+  });
+});
+$("#button5").click(function(){
+  $("div").animate({
+    left:'250px',
+    height:'+=150px',
+    width:'+=150px'
+  });
+});
+$("#button6").click(function(){
+  $("div").animate({
+    height:'toggle'
+  });
+});
+
+$("#button7").click(function(){
+  var div=$("div");
+  div.animate({height:'300px',opacity:'0.4'},"slow");
+  div.animate({width:'300px',opacity:'0.8'},"slow");
+  div.animate({height:'100px',opacity:'0.4'},"slow");
+  div.animate({width:'100px',opacity:'0.8'},"slow");
+});
+
+$("#button8").click(function(){
+  var div=$("div");
+  div.animate({left:'100px'},"slow");
+  div.animate({fontSize:'3em'},"slow");
+});
+
+$("#button9").click(function(){
+  $("#panel").stop();
+});
+
+$("#button10").click(function(){
+  $("p").hide("slow",function(){
+    alert("段落现在被隐藏了");
+  });
+});
+
+$("#button11").click(function(){
+  $("p").hide(1000);
+  alert("段落现在被隐藏了");
+});
+
+});
+</script> 
+</head>
+ 
+<body>
+<button id="button1">开始动画</button>
+<button id="button2">开始动画</button>
+<button id="button3">开始动画</button>
+<button id="button4">开始动画</button>
+<button id="button5">开始动画</button>
+<button id="button6">开始动画</button>
+<button id="button7">开始动画</button>
+<button id="button8">开始动画</button>
+<button id="button9">停止动画</button>
+<button id="button10">callback</button>
+<button id="button11">no callback</button>
+
+<p>默认情况下，所有的 HTML 元素有一个静态的位置，且是不可移动的。 
+如果需要改变，我们需要将元素的 position 属性设置为 relative, fixed, 或 absolute!</p>
+<div style="background:#98bf21;height:100px;width:100px;position:absolute;">
+</div>
+
+</body>
+</html>

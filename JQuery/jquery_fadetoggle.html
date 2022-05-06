@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+	$("#button1").click(function(){
+		$("#div1").fadeToggle();
+		$("#div2").fadeToggle("slow");
+		$("#div3").fadeToggle(3000);
+	});
+
+    $(document).ready(function(){
+  $("#button2").click(function(){
+    $("#div1").fadeTo("slow",0.15);
+    $("#div2").fadeTo("slow",0.4);
+    $("#div3").fadeTo("slow",0.7);
+  });
+
+  $("#button3").click(function(){
+    $("#div4").fadeIn();
+    $("#div5").fadeIn("slow");
+    $("#div6").fadeIn(3000);
+  });
+
+  $("#button4").click(function(){
+  $("#div4").fadeOut();
+  $("#div5").fadeOut("slow");
+  $("#div6").fadeOut(3000);
+});
+});
+});
+</script>
+</head>
+<body>
+
+<p>实例演示了 fadeToggle() 使用了不同的 speed(速度) 参数。</p>
+<button id="button1">点击淡入/淡出</button>
+<button id="button2">点击淡入/淡出</button>
+<button id="button3">FadeIn</button>
+<button id="button4">FadeOut</button>
+<br><br>
+<div id="div1" style="width:80px;height:80px;background-color:red;"></div>
+<br>
+<div id="div2" style="width:80px;height:80px;background-color:green;"></div>
+<br>
+<div id="div3" style="width:80px;height:80px;background-color:blue;"></div>
+<br>
+<div id="div4" style="width:80px;height:80px;display:none;background-color:red;"></div><br>
+<br>
+<div id="div5" style="width:80px;height:80px;display:none;background-color:green;"></div><br>
+<br>
+<div id="div6" style="width:80px;height:80px;display:none;background-color:blue;"></div>
+<br>
+
+</body>
+</html>

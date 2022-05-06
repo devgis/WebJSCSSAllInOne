@@ -1,0 +1,36 @@
+jQuery Prettydate
+jQuery Prettydate 插件为表单提供了强大的验证功能，让客户端表单验证变得更简单，同时提供了大量的定制选项，满足应用程序各种需求。该插件捆绑了一套有用的验证方法，包括 URL 和电子邮件验证，同时提供了一个用来编写用户自定义方法的 API。所有的捆绑方法默认使用英语作为错误信息，且已翻译成其他 37 种语言。
+
+该插件目前版本是 1.1.0。
+
+下载 jQuery Prettydate Validation（密码验证）插件。
+
+使用方式
+如需使用 Prettydate 插件，您需要在 title 中带有 ISO8601 日期：
+
+<a title="2008-01-28T20:24:17Z">January 28th, 2008</a> 
+<a title="2008-01-27T22:24:17Z">January 27th, 2008</a> 
+<a title="2008-01-26T22:24:17Z">January 26th, 2008</a>
+然后对它们应用 prettyDate 方法：
+
+$(function() { $("a").prettyDate(); });
+如需本地化该插件，请在 $.prettyDate.messages 中重写属性。在这里，以德国本地化为例：
+
+$.prettyDate.messages = { now: "gerade eben", minute: "vor einer Minute", minutes: $.prettyDate.template("vor {0} Minuten"), hour: "vor einer Stunde", hours: $.prettyDate.template("vor {0} Stunden"), yesterday: "Gestern", days: $.prettyDate.template("vor {0} Tagen"), weeks: $.prettyDate.template("vor {0} Wochen") }
+该插件每隔 10 秒中更新一次每个被选中的元素。这样子 "just now" 会变为 "1 minute ago" 再变为 "x minutes ago" 再变为 "1 hour ago" 等等。
+
+您可以通过指定 interval 选项为 "false" 来禁用间隔更新：
+
+$(function() { $("a").prettyDate({ interval: false }); });
+或者设置一个不同的时间间隔，例如：interval: 1000，每隔一秒更新一次每个被选中的元素：
+
+$(function() { $("a").prettyDate({ interval: 1000 }); });
+value 选项默认读取 title 属性中的 ISO8601 日期字符串。重载该选项来使用其他属性，例如，一个自定义的 "isodate" 属性：
+
+$(function() { 
+    $("a").prettyDate({
+        function() { // "this" 是 DOM 元素
+            return $(this).attr("isodate");
+        } 
+    }); 
+});

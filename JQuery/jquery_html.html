@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    alert("Text: " + $("#test").text());
+  });
+  $("#btn2").click(function(){
+    alert("HTML: " + $("#test").html());
+  });
+  $("#btn3").click(function(){
+  alert("值为: " + $("#test").val());
+});
+$("#btn4").click(function(){
+  alert($("#runoob").attr("href"));
+});
+
+//设置内容 - text()、html() 以及 val()
+$("#btn1").click(function(){
+    $("#test1").text("Hello world!");
+});
+$("#btn2").click(function(){
+    $("#test2").html("<b>Hello world!</b>");
+});
+$("#btn3").click(function(){
+    $("#test3").val("RUNOOB");
+});
+//ext()、html() 以及 val() 的回调函数
+
+$("#btn1").click(function(){
+    $("#test1").text(function(i,origText){
+        return "旧文本: " + origText + " 新文本: Hello world! (index: " + i + ")"; 
+    });
+});
+ 
+$("#btn2").click(function(){
+    $("#test2").html(function(i,origText){
+        return "旧 html: " + origText + " 新 html: Hello <b>world!</b> (index: " + i + ")"; 
+    });
+});
+
+//设置属性 - attr()
+$("button").click(function(){
+  $("#runoob").attr("href","http://www.runoob.com/jquery");
+});
+
+$("button").click(function(){
+    $("#runoob").attr({
+        "href" : "http://www.runoob.com/jquery",
+        "title" : "jQuery 教程"
+    });
+});
+
+//attr() 的回调函数
+$("button").click(function(){
+  $("#runoob").attr("href", function(i,origValue){
+    return origValue + "/jquery"; 
+  });
+});
+
+//添加新的 HTML 内容
+//我们将学习用于添加新内容的四个 jQuery 方法：
+
+//append() - 在被选元素的结尾插入内容
+//prepend() - 在被选元素的开头插入内容
+//after() - 在被选元素之后插入内容
+//efore() - 在被选元素之前插入内容
+
+$("button").click(function(){
+    $("p").append("追加文本");
+    $("p").prepend("在开头追加文本");
+    $("img").after("在后面添加文本");
+    $("img").before("在前面添加文本");
+});
+function appendText(){
+    var txt1="<p>文本-1。</p>";              // 使用 HTML 标签创建文本
+    var txt2=$("<p></p>").text("文本-2。");  // 使用 jQuery 创建文本
+    var txt3=document.createElement("p");
+    txt3.innerHTML="文本-3。";               // 使用 DOM 创建文本 text with DOM
+    $("body").append(txt1,txt2,txt3);        // 追加新元素
+}
+function afterText()
+{
+    var txt1="<b>I </b>";                    // 使用 HTML 创建元素
+    var txt2=$("<i></i>").text("love ");     // 使用 jQuery 创建元素
+    var txt3=document.createElement("big");  // 使用 DOM 创建元素
+    txt3.innerHTML="jQuery!";
+    $("img").after(txt1,txt2,txt3);          // 在图片后添加文本
+}
+//删除元素
+function Remove()
+{
+    $("#div1").remove();
+    $("#div1").empty();
+    $("p").remove(".italic"); //删除 class="italic" 的所有 <p> 元素：
+}
+
+//jQuery 操作 CSS
+//jQuery 拥有若干进行 CSS 操作的方法。我们将学习下面这些：
+
+//addClass() - 向被选元素添加一个或多个类
+//removeClass() - 从被选元素删除一个或多个类
+//toggleClass() - 对被选元素进行添加/删除类的切换操作
+//css() - 设置或返回样式属性
+
+$("button").click(function(){
+  $("h1,h2,p").addClass("blue");
+  $("div").addClass("important");
+});
+
+$("button").click(function(){
+  $("body div:first").addClass("important blue");
+});
+
+$("button").click(function(){
+  $("h1,h2,p").removeClass("blue");
+});
+
+$("button").click(function(){
+  $("h1,h2,p").toggleClass("blue");
+});
+
+//下面的例子将返回首个匹配元素的 background-color 值：
+$("p").css("background-color");
+
+//所有匹配元素设置 background-color 值：
+$("p").css("background-color","yellow");
+
+//匹配元素设置 background-color 和 font-size：
+$("p").css({"background-color":"yellow","font-size":"200%"});
+
+});
+
+//jQuery width() 和 height() 方法
+//width() 方法设置或返回元素的宽度（不包括内边距、边框或外边距）。
+//height() 方法设置或返回元素的高度（不包括内边距、边框或外边距）。
+//下面的例子返回指定的 <div> 元素的宽度和高度：
+    $("button").click(function(){
+  var txt="";
+  txt+="div 的宽度是: " + $("#div1").width() + "</br>";
+  txt+="div 的高度是: " + $("#div1").height();
+  $("#div1").html(txt);
+});
+
+//Query innerWidth() 和 innerHeight() 方法
+//innerWidth() 方法返回元素的宽度（包括内边距）
+//innerHeight() 方法返回元素的高度（包括内边距）
+//下面的例子返回指定的 <div> 元素的 inner-width/height：
+$("button").click(function(){
+  var txt="";
+  txt+="div 宽度，包含内边距: " + $("#div1").innerWidth() + "</br>";
+    txt+="div 高度，包含内边距: " + $("#div1").innerHeight();
+  $("#div1").html(txt);
+});
+
+//jQuery outerWidth() 和 outerHeight() 方法
+//outerWidth() 方法返回元素的宽度（包括内边距和边框）。
+//outerHeight() 方法返回元素的高度（包括内边距和边框）。
+//下面的例子返回指定的 <div> 元素的 outer-width/height：
+$("button").click(function(){
+  var txt="";
+  txt+="div 宽度，包含内边距和边框: " + $("#div1").outerWidth() + "</br>";
+  txt+="div 高度，包含内边距和边框: " + $("#div1").outerHeight();
+  $("#div1").html(txt);
+});
+
+
+</script>
+</head>
+
+<body>
+<p id="test">这是段落中的 <b>粗体</b> 文本。</p>
+<button id="btn1">显示文本</button>
+<button id="btn2">显示 HTML</button>
+<button id="btn3">显示 val()</button>
+<button id="btn3">显示 attr()</button>
+</body>
+</html>
