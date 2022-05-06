@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap 实例</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	
+<div class="container">
+  <h2>堆叠表单</h2>
+	<form action="">
+	  <div class="form-group">
+		<label for="email">Email address:</label>
+		<input type="email" class="form-control" placeholder="Enter email" id="email">
+	  </div>
+	  <div class="form-group">
+		<label for="pwd">Password:</label>
+		<input type="password" class="form-control" placeholder="Enter password" id="pwd">
+	  </div>
+	  <div class="form-group form-check">
+		<label class="form-check-label">
+		  <input class="form-check-input" type="checkbox"> Remember me
+		</label>
+	  </div>
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+
+
+<div class="container">
+    <h2>内联表单</h2>
+    <p>屏幕宽度在大于等于 576px 时才会水平显示。如果小于 576px 则会生成堆叠表单。</p>
+    <form class="form-inline">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox"> Remember me
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <div class="container">
+    <h2>内联表单</h2>
+    <p>屏幕宽度在大于等于 576px 时才会水平显示。如果小于 576px 则会生成堆叠表单。</p>
+    <form class="form-inline" action="/action_page.php">
+      <label for="email2" class="mb-2 mr-sm-2">Email:</label>
+      <input type="text" class="form-control mb-2 mr-sm-2" id="email2" placeholder="Enter email" name="email">
+      <label for="pwd2" class="mb-2 mr-sm-2">Password:</label>
+      <input type="text" class="form-control mb-2 mr-sm-2" id="pwd2" placeholder="Enter password" name="pswd">
+      <div class="form-check mb-2 mr-sm-2">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" name="remember"> Remember me
+        </label>
+      </div>    
+      <button type="submit" class="btn btn-primary mb-2">Submit</button>
+    </form>
+  </div>
+
+  <div class="container">
+    <h2>表单网格</h2>
+    <p>使用 .row 和 .col 类来设置两个列并排显示:</p>
+    <form action="/action_page.php">
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+        </div>
+        <div class="col">
+          <input type="password" class="form-control" placeholder="Enter password" name="pswd">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+  </div>
+
+  <div class="container">
+    <h2>表单行/网格</h2>
+    <p>创建不同的实例展示 .row 和 .form-row 的不同效果。</p>
+    <p>使用 .row 和 .col 类来设置两个列并排显示:</p>
+    <form>
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+        </div>
+        <div class="col">
+          <input type="password" class="form-control" placeholder="Enter password" name="pswd">
+        </div>
+      </div>
+    </form>
+    <br>
+    
+    <p>使用 .form-row 和 .col 类来设置两个列并排显示:</p>
+    <form>
+      <div class="form-row">
+        <div class="col">
+          <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+        </div>
+        <div class="col">
+          <input type="password" class="form-control" placeholder="Enter password" name="pswd">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="container">
+    <h2>表单验证</h2>
+    <p>使用 .was-validated 类显示表单在提交之前需要填写的内容：</p>
+      <form action="" class="was-validated">
+        <div class="form-group">
+          <label for="uname">Username:</label>
+          <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+          <div class="valid-feedback">验证成功！</div>
+          <div class="invalid-feedback">请输入用户名！</div>
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+          <div class="valid-feedback">验证成功！</div>
+          <div class="invalid-feedback">请输入密码！</div>
+        </div>
+        <div class="form-group form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" name="remember" required> 同意协议
+            <div class="valid-feedback">验证成功！</div>
+            <div class="invalid-feedback">同意协议才能提交。</div>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary">提交</button>
+      </form>
+  </div>
+
+  <div class="container">
+    <h2>表单验证</h2>
+    <p>使用 .needs-validation，它将在表单提交之后验证缺少的内容。这里需要添加一些 JavaScript 代码才能使代码正常工作。</p>
+    <p>可以点击提交按钮查看效果。</p>
+      <form action="" class="needs-validation" novalidate>
+        <div class="form-group">
+          <label for="uname">Username:</label>
+          <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+          <div class="valid-feedback">验证成功！</div>
+          <div class="invalid-feedback">请输入用户名！</div>
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+          <div class="valid-feedback">验证成功！</div>
+          <div class="invalid-feedback">请输入密码！</div>
+        </div>
+        <div class="form-group form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" name="remember" required> 同意协议
+            <div class="valid-feedback">验证成功！</div>
+            <div class="invalid-feedback">同意协议才能提交。</div>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary">提交</button>
+      </form>
+  </div>
+  
+  <script>
+  // 如果验证不通过禁止提交表单
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // 获取表单验证样式
+      var forms = document.getElementsByClassName('needs-validation');
+      // 循环并禁止提交
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+  </script>
+
+  
+</body>
+</html>

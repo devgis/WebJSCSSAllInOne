@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap 实例</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>下拉菜单</h2>
+  <p>.dropdown 类用来指定一个下拉菜单。</p>
+  <p>.dropdown-menu 类来设置实际下拉菜单。</p>
+  <p>我们可以使用一个按钮或链接来打开下拉菜单， 按钮或链接需要添加 .dropdown-toggle 和 data-toggle="dropdown" 属性。</p>                                          
+  <div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      Dropdown button
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Link 1</a>
+      <a class="dropdown-item" href="#">Link 2</a>
+      <a class="dropdown-item" href="#">Link 3</a>
+    </div>
+  </div>
+</div>
+<div class="container">
+	<div class="dropdown">
+	  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		Dropdown link
+	  </a>
+
+	  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+		<a class="dropdown-item" href="#">Action</a>
+		<a class="dropdown-item" href="#">Another action</a>
+		<a class="dropdown-item" href="#">Something else here</a>
+	  </div>
+	</div>
+</div>
+<div class="container">
+    <h2>下拉菜单中的分割线</h2>
+    <p>.dropdown-divider 类用于在下拉菜单中创建一个水平的分割线：</p>
+    <div class="dropdown">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        Dropdown button
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Another link</a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h2>下拉菜单中</h2>
+    <p>.dropdown-header 类用于在下拉菜单中添加标题：</p>
+    <div class="dropdown">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        Dropdown button
+      </button>
+      <div class="dropdown-menu">
+        <h5 class="dropdown-header">Dropdown header</h5>
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+        <h5 class="dropdown-header">Dropdown header</h5>
+        <a class="dropdown-item" href="#">Another link</a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h2>下拉菜单</h2>
+    <p>.active 类会让下拉菜单的选项高亮显示 (添加蓝色背景)。</p>
+    <p>如果要禁用下拉菜单的选项，可以使用.disabled 类。</p>
+    <div class="dropdown">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        Dropdown button
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Normal</a>
+        <a class="dropdown-item active" href="#">Active</a>
+        <a class="dropdown-item disabled" href="#">Disabled</a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h2>下拉菜单</h2>
+    <p>如果我们想让下拉菜单右对齐，可以在元素上的 .dropdown-menu 类后添加 .dropdown-menu-right 类。</p>
+    <div class="dropdown">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        Dropdown button
+      </button>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h2>下拉菜单</h2>
+    <p> .dropright 类用于设置下拉菜单向右弹出：</p><br>
+    <!-- Default dropright button -->
+      <div class="btn-group dropright">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropright
+        </button>
+        <div class="dropdown-menu">
+          <!-- Dropdown menu links -->
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+      </div>
+  
+      <!-- Split dropright button -->
+      <div class="btn-group dropright">
+        <button type="button" class="btn btn-secondary">
+          Split dropright
+        </button>
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropright</span>
+        </button>
+        <div class="dropdown-menu">
+          <!-- Dropdown menu links -->
+           <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </div>
+  </div>
+  <div class="container">
+    <h2>下拉菜单</h2>
+    <p> .dropup 类用于设置下拉菜单向上弹出：</p><br><br><br><br><br><br><br><br>
+  <!-- Default dropup button -->
+    <div class="btn-group dropup">
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropup
+    </button>
+    <div class="dropdown-menu">
+        <!-- Dropdown menu links -->
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+    </div>
+    
+    <!-- Split dropup button -->
+    <div class="btn-group dropup">
+    <button type="button" class="btn btn-secondary">
+        Split dropup
+    </button>
+    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu">
+        <!-- Dropdown menu links -->
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+    </div>
+</div>
+<div class="container" style="text-align:center;">
+    <h2>下拉菜单</h2>
+    <p> .dropleft 类用于设置下拉菜单向左弹出：</p><br>
+    <!-- Default dropleft button -->
+      <div class="btn-group dropleft">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropleft
+        </button>
+        <div class="dropdown-menu">
+          <!-- Dropdown menu links -->
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </div>
+  <br><br><br>
+      <!-- Split dropleft button -->
+      <div class="btn-group dropleft">
+        <button type="button" class="btn btn-secondary">
+          Split dropleft
+        </button>
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropleft</span>
+        </button>
+        <div class="dropdown-menu">
+          <!-- Dropdown menu links -->
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </div>
+  </div>
+  <div class="container">
+    <h2>下拉菜单</h2>
+    <p>.dropdown-item-text 类可以设置下拉菜单中的文本项：</p>                                         
+    <div class="dropdown">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        下拉菜单
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">链接 1</a>
+        <a class="dropdown-item" href="#">链接 2</a>
+        <a class="dropdown-item-text" href="#">文本链接</a>
+        <span class="dropdown-item-text">仅仅是文本</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>按钮中的下拉菜单</h2>
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary">Primary</button>
+      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+      </div>
+    </div>
+    
+    <div class="btn-group">
+      <button type="button" class="btn btn-secondary">Secondary</button>
+      <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+      </div>
+    </div>
+  
+    <div class="btn-group">
+      <button type="button" class="btn btn-success">Success</button>
+      <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+      </div>
+    </div>
+  
+    <div class="btn-group">
+      <button type="button" class="btn btn-info">Info</button>
+      <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+      </div>
+    </div>
+  
+    <div class="btn-group">
+      <button type="button" class="btn btn-warning">Warning</button>
+      <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+      </div>
+    </div>
+  
+    <div class="btn-group">
+      <button type="button" class="btn btn-danger">Danger</button>
+      <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>垂直方向内嵌按钮组</h2>
+    <div class="btn-group-vertical">
+      <button type="button" class="btn btn-primary">Apple</button>
+      <button type="button" class="btn btn-primary">Samsung</button>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          Sony
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Tablet</a>
+          <a class="dropdown-item" href="#">Smartphone</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

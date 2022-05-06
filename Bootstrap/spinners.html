@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap 实例</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>加载中效果</h2>
+  <p>要创建加载中效果可以使用 .spinner-border 类:</p>
+                                        
+  <div class="spinner-border"></div>
+</div>
+
+
+<div class="container">
+    <h2>不同颜色加载效果</h2>
+    <p>可以使用文本颜色类设置不同的颜色：</p>
+                                          
+    <div class="spinner-border text-muted"></div>
+    <div class="spinner-border text-primary"></div>
+    <div class="spinner-border text-success"></div>
+    <div class="spinner-border text-info"></div>
+    <div class="spinner-border text-warning"></div>
+    <div class="spinner-border text-danger"></div>
+    <div class="spinner-border text-secondary"></div>
+    <div class="spinner-border text-dark"></div>
+    <div class="spinner-border text-light"></div>
+  </div>
+
+  <div class="container">
+    <h2>闪烁的加载效果</h2>
+    <p>使用 .spinner-grow 类来设置闪烁的加载效果:</p>
+                                          
+    <div class="spinner-grow text-muted"></div>
+    <div class="spinner-grow text-primary"></div>
+    <div class="spinner-grow text-success"></div>
+    <div class="spinner-grow text-info"></div>
+    <div class="spinner-grow text-warning"></div>
+    <div class="spinner-grow text-danger"></div>
+    <div class="spinner-grow text-secondary"></div>
+    <div class="spinner-grow text-dark"></div>
+    <div class="spinner-grow text-light"></div>
+  </div>
+
+  <div class="container">
+    <h2>设置加载效果大小</h2>
+    <p>使用.spinner-border-sm 或 .spinner-grow-sm 类来创建加载效果的大小:</p>
+                                          
+    <div class="spinner-border spinner-border-sm"></div>
+    <div class="spinner-grow spinner-grow-sm"></div>
+  </div>
+  <div class="container">
+    <h2>加载按钮</h2>
+    <p>按钮添加正在加载按钮:</p>
+                                          
+    <button class="btn btn-primary">
+      <span class="spinner-border spinner-border-sm"></span>
+    </button>
+  
+    <button class="btn btn-primary">
+      <span class="spinner-border spinner-border-sm"></span>
+      Loading..
+    </button>
+    
+    <button class="btn btn-primary" disabled>
+      <span class="spinner-border spinner-border-sm"></span>
+      Loading..
+    </button>
+    
+    <button class="btn btn-primary" disabled>
+      <span class="spinner-grow spinner-grow-sm"></span>
+      Loading..
+    </button>
+  </div>  
+  
+</body>
+</html>
