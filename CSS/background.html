@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+#example1 {
+    background-image: url(https://www.runoob.com/try/demo_source/img_flwr.gif), url(https://www.runoob.com/images/paper.gif);
+    background-position: right bottom, left top;
+    background-repeat: no-repeat, repeat;
+    padding: 15px;
+}
+body
+{ 
+    background-image:url(https://www.runoob.com/try/demo_source/img_flwr.gif),url(https://www.runoob.com/try/demo_source/img_tree.gif);
+    background-size:80px 60px;
+	background-repeat:no-repeat;
+	padding-top:40px;
+}
+#example4 {
+    border: 10px dotted black;
+    padding:35px;
+    background: yellow;
+}
+
+#example5 {
+    border: 10px dotted black;
+    padding:35px;
+    background: yellow;
+    background-clip: padding-box;
+}
+
+#example6 {
+    border: 10px dotted black;
+    padding:35px;
+    background: yellow;
+    background-clip: content-box;
+}
+
+div
+{
+	border:1px solid black;
+	padding:35px;
+	background-image:url('smiley.gif');
+	background-repeat:no-repeat;
+	background-position:left;
+}
+#div1
+{
+	background-origin:border-box;
+}
+#div2
+{
+	background-origin:content-box;
+}
+#div3
+{
+	background:url(img_flwr.gif);
+	background-size:100% 100%;
+	background-repeat:no-repeat;
+}
+</style>
+</head>
+<body>
+
+<div id="example1">
+<h1>Lorem Ipsum Dolor</h1>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+<p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+</div>
+
+<div id="example4">
+    <h2>Lorem Ipsum Dolor</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+    </div>
+    
+    <p>background-clip: padding-box:</p>
+    <div id="example5">
+    <h2>Lorem Ipsum Dolor</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+    </div>
+    
+    <p>background-clip: content-box:</p>
+    <div id="example6">
+    <h2>Lorem Ipsum Dolor</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+    </div>
+
+    <p>背景图像边界框的相对位置：</p>
+<div id="div1">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+</div>
+
+<p>背景图像的相对位置的内容框：</p>
+<div id="div2">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+</div>
+
+<div id="div3">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+    </div>
+
+</body>
+</html>

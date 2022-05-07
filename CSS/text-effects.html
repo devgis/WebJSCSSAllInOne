@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>Text effects</title> 
+<style>
+h1
+{
+	text-shadow: 5px 5px 5px #FF0000;
+}
+#div1
+{
+	width:300px;
+	height:100px;
+	background-color:yellow;
+	box-shadow: 10px 10px 5px #888888;
+}
+#div2 {
+    width: 300px;
+    height: 100px;
+    padding: 15px;
+    background-color: yellow;
+    box-shadow: 10px 10px grey;
+}
+#div3 {
+    width: 300px;
+    height: 100px;
+    padding: 15px;
+    background-color: yellow;
+    box-shadow: 10px 10px 5px grey;
+}
+
+#boxshadow {
+    position: relative;
+    -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.5);
+    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    padding: 10px;
+    background: white;
+}
+
+/* Make the image fit the box */
+#boxshadow img {
+    width: 100%;
+    border: 1px solid #8a4419;
+    border-style: inset;
+}
+
+#boxshadow::after {
+    content: '';
+    position: absolute;
+    z-index: -1; /* hide shadow behind image */
+    -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+    width: 70%;
+    left: 15%; /* one half of the remaining 30% */
+    height: 100px;
+    bottom: 0;
+}
+
+div.card {
+  width: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+div.header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-size: 40px;
+}
+
+div.container {
+    padding: 10px;
+}
+div.test
+{
+	white-space:nowrap; 
+	width:12em; 
+	overflow:hidden; 
+	border:1px solid #000000;
+}
+
+div.polaroid {
+  width: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+div.container {
+  padding: 10px;
+}
+
+div.test2
+{
+	white-space:nowrap; 
+	width:12em; 
+	overflow:hidden; 
+	border:1px solid #000000;
+}
+
+p.test1
+{
+	width:9em; 
+	border:1px solid #000000;
+	word-break:keep-all;
+}
+
+p.test2
+{
+	width:9em; 
+	border:1px solid #000000;
+	word-break:break-all;
+}
+</style>
+</head>
+<body>
+
+<h1>Text-shadow effect!</h1>
+
+<p><b>注意:</b> Internet Explorer 9 以及更早版本的浏览器不支持 text-shadow属性.</p>
+<div id="div1"></div>
+<div id="div2">This is a div element with a box-shadow</div>
+<div id="div3">This is a div element with a box-shadow</div>
+<div id="boxshadow">
+    <img src="https://www.runoob.com/try/demo_source/rock600x400.jpg" alt="Norway" width="600" height="400">
+  </div>
+
+  <div class="card">
+    <div class="header">
+      <h1>1</h1>
+    </div>
+  
+    <div class="container">
+      <p>January 1, 2016</p>
+    </div>
+  </div>
+  <p>以下 div 容器内的文本无法完全显示，可以看到它被裁剪了。</p>
+  <p>div 使用 &quot;text-overflow:ellipsis&quot;:</p>
+  
+  <div class="test" style="text-overflow:ellipsis;">This is some long text that will not fit in the box</div>
+  <p>div 使用 &quot;text-overflow:clip&quot;:</p>
+  <div class="test" style="text-overflow:clip;">This is some long text that will not fit in the box</div>
+  <p>div 使用自定义字符串 &quot;text-overflow: &gt;&gt;&quot;(只在 Firefox 浏览器下有效):</p>
+  <div class="test" style="text-overflow:'>>';">This is some long text that will not fit in the box</div>
+
+  <h2> 卡片</h2>
+
+<p>box-shadow属性可以用来创建纸质样式卡片:</p>
+
+<div class="polaroid">
+  <img src="https://www.runoob.com/try/demo_source/rock600x400.jpg" alt="Norway" style="width:100%">
+  <div class="container">
+    <p>Hardanger, Norway</p>
+  </div>
+</div>
+
+<p>以下 div 容器内的文本无法完全显示，可以看到它被裁剪了。</p>
+<p>div 使用 &quot;text-overflow:ellipsis&quot;:</p>
+
+<div class="test2" style="text-overflow:ellipsis;">This is some long text that will not fit in the box</div>
+<p>div 使用 &quot;text-overflow:clip&quot;:</p>
+<div class="test2" style="text-overflow:clip;">This is some long text that will not fit in the box</div>
+<p>div 使用自定义字符串 &quot;text-overflow: &gt;&gt;&quot;(只在 Firefox 浏览器下有效):</p>
+<div class="test2" style="text-overflow:'>>';">This is some long text that will not fit in the box</div>
+<p class="test1"> This paragraph contains some text. This line will-break-at-hyphenates.</p>
+<p class="test2"> This paragraph contains some text: The lines will break at any character.</p>
+
+<p><b>注意:</b>  word-break 属性不兼容 Opera.</p>
+</body>
+</html>

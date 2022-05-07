@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style> 
+#div1
+{
+	width:100px;
+	height:100px;
+	background:red;
+	animation:myfirst 5s;
+	-webkit-animation:myfirst 5s; /* Safari and Chrome */
+}
+
+@keyframes myfirst
+{
+	from {background:red;}
+	to {background:yellow;}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+	from {background:red;}
+	to {background:yellow;}
+}
+#div2
+{
+	width:100px;
+	height:100px;
+	background:red;
+	animation:myfirst2 5s;
+	-moz-animation:myfirst2 5s; /* Firefox */
+	-webkit-animation:myfirst2 5s; /* Safari and Chrome */
+	-o-animation:myfirst2 5s; /* Opera */
+}
+
+@keyframes myfirst2
+{
+	0%   {background:red;}
+	25%  {background:yellow;}
+	50%  {background:blue;}
+	100% {background:green;}
+}
+​
+@-moz-keyframes myfirst2 /* Firefox */
+{
+    0%   {background:red;}
+    25%  {background:yellow;}
+    50%  {background:blue;}
+    100% {background:green;}
+}
+​
+@-webkit-keyframes myfirst2 /* Safari and Chrome */
+{
+    0%   {background:red;}
+    25%  {background:yellow;}
+    50%  {background:blue;}
+    100% {background:green;}
+}
+​
+@-o-keyframes myfirst2 /* Opera */
+{
+    0%   {background:red;}
+    25%  {background:yellow;}
+    50%  {background:blue;}
+    100% {background:green;}
+}
+#div3
+{
+	width:100px;
+	height:100px;
+	background:red;
+	position:relative;
+	animation:myfirst3 5s;
+	-webkit-animation:myfirst3 5s; /* Safari and Chrome */
+}
+
+@keyframes myfirst3
+{
+	0%   {background:red; left:0px; top:0px;}
+	25%  {background:yellow; left:200px; top:0px;}
+	50%  {background:blue; left:200px; top:200px;}
+	75%  {background:green; left:0px; top:200px;}
+	100% {background:red; left:0px; top:0px;}
+}
+
+@-webkit-keyframes myfirst3 /* Safari and Chrome */
+{
+	0%   {background:red; left:0px; top:0px;}
+	25%  {background:yellow; left:200px; top:0px;}
+	50%  {background:blue; left:200px; top:200px;}
+	75%  {background:green; left:0px; top:200px;}
+	100% {background:red; left:0px; top:0px;}
+}
+#div4
+{
+	width:100px;
+	height:100px;
+	background:red;
+	position:relative;
+	animation-name:myfirst4;
+	animation-duration:5s;
+	animation-timing-function:linear;
+	animation-delay:2s;
+	animation-iteration-count:infinite;
+	animation-direction:alternate;
+	animation-play-state:running;
+	/* Safari and Chrome: */
+	-webkit-animation-name:myfirst4;
+	-webkit-animation-duration:5s;
+	-webkit-animation-timing-function:linear;
+	-webkit-animation-delay:2s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-direction:alternate;
+	-webkit-animation-play-state:running;
+}
+
+@keyframes myfirst4
+{
+	0%   {background:red; left:0px; top:0px;}
+	25%  {background:yellow; left:200px; top:0px;}
+	50%  {background:blue; left:200px; top:200px;}
+	75%  {background:green; left:0px; top:200px;}
+	100% {background:red; left:0px; top:0px;}
+}
+
+@-webkit-keyframes myfirst4 /* Safari and Chrome */
+{
+	0%   {background:red; left:0px; top:0px;}
+	25%  {background:yellow; left:200px; top:0px;}
+	50%  {background:blue; left:200px; top:200px;}
+	75%  {background:green; left:0px; top:200px;}
+	100% {background:red; left:0px; top:0px;}
+}
+#div5
+{
+	width:100px;
+	height:100px;
+	background:red;
+	position:relative;
+	animation:myfirst5 5s linear 2s infinite alternate;
+	/* Firefox: */
+	-moz-animation:myfirst5 5s linear 2s infinite alternate;
+	/* Safari and Chrome: */
+	-webkit-animation:myfirst5 5s linear 2s infinite alternate;
+	/* Opera: */
+	-o-animation:myfirst5 5s linear 2s infinite alternate;
+}
+
+@keyframes myfirst5
+{
+	0%   {background:red; left:0px; top:0px;}
+	25%  {background:yellow; left:200px; top:0px;}
+	50%  {background:blue; left:200px; top:200px;}
+	75%  {background:green; left:0px; top:200px;}
+	100% {background:red; left:0px; top:0px;}
+}
+
+@-moz-keyframes myfirst5 /* Firefox */
+{
+	0%   {background:red; left:0px; top:0px;}
+	25%  {background:yellow; left:200px; top:0px;}
+	50%  {background:blue; left:200px; top:200px;}
+	75%  {background:green; left:0px; top:200px;}
+	100% {background:red; left:0px; top:0px;}
+}
+
+@-webkit-keyframes myfirst5 /* Safari and Chrome */
+{
+	0%   {background:red; left:0px; top:0px;}
+	25%  {background:yellow; left:200px; top:0px;}
+	50%  {background:blue; left:200px; top:200px;}
+	75%  {background:green; left:0px; top:200px;}
+	100% {background:red; left:0px; top:0px;}
+}
+
+@-o-keyframes myfirst5 /* Opera */
+{
+	0%   {background:red; left:0px; top:0px;}
+	25%  {background:yellow; left:200px; top:0px;}
+	50%  {background:blue; left:200px; top:200px;}
+	75%  {background:green; left:0px; top:200px;}
+	100% {background:red; left:0px; top:0px;}
+}
+</style>
+</head>
+<body>
+
+<p><b>注意:</b> 该实例在 Internet Explorer 9 及更早 IE 版本是无效的。</p>
+
+<div id="div1"></div>
+
+<div  id="div2"></div>
+
+<p><b>注释：</b>当动画完成时，会变回初始的样式。</p>
+
+
+<p><b>注意:</b> 该实例在 Internet Explorer 9 及更早 IE 版本是无效的。</p>
+
+<p><b>注意:</b> 该实例在 Internet Explorer 9 及更早 IE 版本是无效的。</p>
+
+<div id="div3"></div>
+<p><b>注意:</b> 该实例在 Internet Explorer 9 及更早 IE 版本是无效的。</p>
+
+<div id="div4"></div>
+<p><b>注意:</b> 该实例在 Internet Explorer 9 及更早 IE 版本是无效的。</p>
+
+<div id="div5"></div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title>
+<style> 
+#div1
+{
+	width:100px;
+	height:100px;
+	background:red;
+	transition:width 2s;
+	-webkit-transition:width 2s; /* Safari */
+}
+
+#div1:hover
+{
+	width:300px;
+}
+
+#div2 {
+    width: 100px;
+    height: 100px;
+    background: red;
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s; /* For Safari 3.1 to 6.0 */
+    transition: width 2s, height 2s, transform 2s;
+}
+
+#div2:hover {
+    width: 200px;
+    height: 200px;
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+
+#div3
+{
+	width:100px;
+	height:100px;
+	background:red;
+	transition-property:width;
+	transition-duration:1s;
+	transition-timing-function:linear;
+	transition-delay:2s;
+	/* Safari */
+	-webkit-transition-property:width;
+	-webkit-transition-duration:1s;
+	-webkit-transition-timing-function:linear;
+	-webkit-transition-delay:2s;
+}
+
+#div3:hover
+{
+	width:200px;
+}
+
+#div4
+{
+	width:100px;
+	height:100px;
+	background:red;
+	transition:width 1s linear 2s;
+	/* Safari */
+	-webkit-transition:width 1s linear 2s;
+}
+
+#div4:hover
+{
+	width:200px;
+}
+</style>
+</head>
+<body>
+
+<p><b>注意：</b>该实例无法在 Internet Explorer 9 及更早 IE 版本上工作。</p>
+
+<div id="div1"></div>
+
+<p>鼠标移动到 div 元素上，查看过渡效果。</p>
+<div id="div2">鼠标移动到 div 元素上，查看过渡效果。</div>
+
+<p><b>注意：</b>该实例无法在 Internet Explorer 9 及更早 IE 版本上工作。</p>
+
+
+
+<div id="div3"></div>
+
+<p>鼠标移动到 div 元素上，查看过渡效果。</p>
+<p><b>注意：</b> 过渡效果需要等待两秒后才开始。</p>
+
+<p><b>注意：</b>该实例无法在 Internet Explorer 9 及更早 IE 版本上工作。</p>
+
+<div id="div4"></div>
+
+<p>鼠标移动到 div 元素上，查看过渡效果。</p>
+<p><b>注意：</b> 过渡效果需要等待两秒后才开始。</p>
+
+
+</body>
+</html>

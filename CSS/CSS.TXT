@@ -1,0 +1,123 @@
+CSS3 教程
+
+CSS 用于控制网页的样式和布局。
+CSS3 是最新的 CSS 标准。
+
+本教程向您讲解 CSS3 中的新特性。
+
+开始学习 CSS3!
+
+
+CSS3 Transforms
+
+OperaSafariChromeFirefoxInternet Explorer
+CSS3 实例
+div
+{
+    transform:rotate(30deg);
+}
+
+尝试一下 »
+点击 "尝试一下" 按钮查看在线实例。
+
+CSS3 参考手册
+在菜鸟教程中，我们提供完整的 CSS3 参考手册，包括所有属性和选择器的语法、实例、浏览器支持信息。
+
+CSS 属性参考手册
+
+CSS3 浏览器支持情况
+
+CSS 选择器参考手册
+
+CSS 颜色参考手册
+
+
+CSS3 简介
+CSS3 已完全向后兼容，所以你就不必改变现有的设计。
+
+CSS3 模块
+CSS3 被拆分为"模块"。旧规范已拆分成小块，还增加了新的。
+
+一些最重要 CSS3 模块如下：
+
+选择器
+盒模型
+背景和边框
+文字特效
+2D/3D转换
+动画
+多列布局
+用户界面
+CSS3 建议
+W3C 的 CSS3 规范仍在开发。
+
+但是，现在新的浏览器已经都支持 CSS3 属性。
+
+CSS3 边框
+CSS3 边框
+用 CSS3，你可以创建圆角边框，添加阴影框，并作为边界的形象而不使用设计程序，如 Photoshop。
+
+在本章中，您将了解以下的边框属性：
+
+border-radius
+box-shadow
+border-image
+CSS3 圆角
+在 CSS2 中添加圆角棘手。我们不得不在每个角落使用不同的图像。
+
+在 CSS3 中，很容易创建圆角。
+
+在 CSS3 中 border-radius 属性被用于创建圆角：
+
+这是圆角边框！
+
+实例
+在div中添加圆角元素：
+
+div
+{
+border:2px solid;
+border-radius:25px;
+}
+
+尝试一下 »
+
+CSS3 盒阴影
+CSS3 中的 box-shadow 属性被用来添加阴影:
+
+
+实例
+在div中添加box-shadow属性
+
+div
+{
+box-shadow: 10px 10px 5px #888888;
+}
+
+尝试一下 »
+
+CSS3 边界图片
+有了 CSS3 的 border-image 属性，你可以使用图像创建一个边框：
+
+border-image 属性允许你指定一个图片作为边框！ 用于创建上文边框的原始图像：
+在 div 中使用图片创建边框:
+
+Border
+
+实例
+在 div 中使用图片创建边框
+
+div
+{
+border-image:url(border.png) 30 30 round;
+-webkit-border-image:url(border.png) 30 30 round; /* Safari 5 and older */
+-o-border-image:url(border.png) 30 30 round; /* Opera */
+}
+
+尝试一下 »
+
+新边框属性
+属性	说明	CSS
+border-image	设置所有边框图像的速记属性。	3
+border-radius	一个用于设置所有四个边框- *-半径属性的速记属性	3
+box-shadow	附加一个或多个下拉框的阴影	3
