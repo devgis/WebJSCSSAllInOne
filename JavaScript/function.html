@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Function</title>
+</head>
+<body>
+
+<p>JavaScrip 内置构造函数。</p>
+<p id="demo"></p>
+<script>
+    //用Function创建函数
+var myFunction = new Function("a", "b", "return a * b");
+document.getElementById("demo").innerHTML = myFunction(4, 3);
+
+//函数提升（Hoisting）
+//在之前的教程中我们已经了解了 "hoisting(提升)"。
+//提升（Hoisting）是 JavaScript 默认将当前作用域提升到前面去的行为。
+//提升（Hoisting）应用在变量的声明与函数的声明。
+//因此，函数可以在声明之前调用：
+myFunction2(5);
+function myFunction2(y) {
+    return y * y;
+}
+
+//自调用
+(function () {
+    var x = "Hello!!";      // 我将调用自己
+    document.write(x);
+})();
+
+//函数作为一个值
+function myFunction3(a, b) {
+    return a * b;
+}
+
+var x1 = myFunction3(4, 3);
+var x1 = myFunction(4, 3) * 2;//函数作为表达式
+
+//箭头函数不需要使用 function、return 关键字及大括号 {}。
+//IE11 及更早 IE 版本不支持箭头函数。
+const xx = (x, y) => x * y;
+document.getElementById("demo").innerHTML = xx(5, 5);
+
+
+function myFunction4(x, y) {
+    if (y === undefined) {
+          y = 0;
+    } 
+}
+myFunction4();
+
+//函数自带参数
+function myFunction5(x, y = 10) {
+    // y is 10 if not passed or undefined
+    return x + y;
+}
+ 
+myFunction5(0, 2) // 输出 2
+myFunction5(5); // 输出 15, y 参数的默认值
+
+//arguments 参数用法
+x = findMax(1, 123, 500, 115, 44, 88);
+function findMax() {
+    var i, max = arguments[0];
+    
+    if(arguments.length < 2) return max;
+ 
+    for (i = 0; i < arguments.length; i++) {
+        if (arguments[i] > max) {
+            max = arguments[i];
+        }
+    }
+    return max;
+}
+
+x = sumAll(1, 123, 500, 115, 44, 88);
+function sumAll() {
+    var i, sum = 0;
+    for (i = 0; i < arguments.length; i++) {
+        sum += arguments[i];
+    }
+    return sum;
+}
+
+//此函数不属于任何对象所以可以window.myFunction6 方式调用
+function myFunction6(a, b) {
+    return a * b;
+}
+myFunction6(10, 2); //
+window.myFunction6(10, 2);    // window.myFunction(10, 2) 返回 20 与上方等同
+
+//全局对象
+function myFunction() {
+    return this;
+}
+myFunction();                // 返回 window 对象
+
+//函数作为方法调用
+var myObject = {
+    firstName:"John",
+    lastName: "Doe",
+    fullName: function () {
+        return this.firstName + " " + this.lastName;
+        //return this;
+    }
+}
+myObject.fullName();         // 返回 "John Doe"
+
+//构造函数
+// 构造函数:
+function myFunction(arg1, arg2) {
+    this.firstName = arg1;
+    this.lastName  = arg2;
+}
+ 
+// This    creates a new object
+var x = new myFunction("John","Doe");
+x.firstName;                             // 返回 "John"
+
+
+//函数方法调用
+function myFunction7(a, b) {
+    return a * b;
+}
+myObject = myFunction7.call(myObject, 10, 2);     // 返回 20
+
+myArray = [10, 2];
+myObject = myFunction7.apply(myObject, myArray);  // 返回 20
+
+//如果定义全局变量计数器则可以在任意位置修改counter 并且不适用add函数就可以修改。
+//所以 counter必须定义在函数内部，统一调用add函数修改counter 
+//本意祥修改counter 但是内次执行都返回1 闭包则可以实现必须通过add函数修改内部变量困境
+function add0() {
+    var counter = 0;
+    return counter += 1;
+}
+ 
+document.write(add0());
+document.write(add0());
+document.write(add0());
+
+//闭包
+//变量声明时如果不使用 var 关键字，那么它就是一个全局变量，即便它在函数内定义。
+
+//变量 add 指定了函数自我调用的返回字值。
+//自我调用函数只执行一次。设置计数器为 0。并返回函数表达式。
+//add变量可以作为一个函数使用。非常棒的部分是它可以访问函数上一层作用域的计数器。
+//这个叫作 JavaScript 闭包。它使得函数拥有私有变量变成可能。
+//计数器受匿名函数的作用域保护，只能通过 add 方法修改。
+var add = (function () {
+    var counter = 0;
+    document.write(counter);
+    return function () {return counter += 1;} //闭包 返回内部变量让外部可以访问到
+})();
+document.write(add());
+document.write(add());
+document.write(add());
+</script>
+
+
+
+
+</body>
+</html>

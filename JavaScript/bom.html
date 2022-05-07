@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Javascript BOM</title>
+</head>
+<body onload="checkCookie()">
+
+<p id="demo"></p>
+<button onclick="myStopFunction()">停止</button>
+<script>
+
+function setCookie(cname,cvalue,exdays){
+	var d = new Date();
+	d.setTime(d.getTime()+(exdays*24*60*60*1000));
+	var expires = "expires="+d.toGMTString();
+	document.cookie = cname+"="+cvalue+"; "+expires;
+}
+function getCookie(cname){
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+	}
+	return "";
+}
+function checkCookie(){
+	var user=getCookie("username");
+	if (user!=""){
+		alert("欢迎 " + user + " 再次访问");
+	}
+	else {
+		user = prompt("请输入你的名字:","");
+  		if (user!="" && user!=null){
+    		setCookie("username",user,30);
+    	}
+	}
+}
+var w=window.innerWidth
+      || document.documentElement.clientWidth
+      || document.body.clientWidth;
+var h=window.innerHeight
+      || document.documentElement.clientHeight
+      || document.body.clientHeight;
+x=document.getElementById("demo");
+x.innerHTML="浏览器window宽度: " + w + ", 高度: " + h + "。"
+
+document.write("可用宽度: " + screen.availWidth);
+document.write("可用高度: " + screen.availHeight);
+
+document.write(location.href);
+document.write(location.pathname);
+//sleep(5000);
+//window.location.assign("https://www.runoob.com")
+
+
+function goBack()
+{
+    window.history.back()
+}
+function goForward()
+{
+    window.history.forward()
+}
+
+//获取系统信息
+var txt = "<p>浏览器代号: " + navigator.appCodeName + "</p>";
+txt+= "<p>浏览器名称: " + navigator.appName + "</p>";
+txt+= "<p>浏览器版本: " + navigator.appVersion + "</p>";
+txt+= "<p>启用Cookies: " + navigator.cookieEnabled + "</p>";
+txt+= "<p>硬件平台: " + navigator.platform + "</p>";
+txt+= "<p>用户代理: " + navigator.userAgent + "</p>";
+txt+= "<p>用户代理语言: " + navigator.language + "</p>";
+document.write(txt);
+
+var myVar=setInterval(function(){myTimer()},1000);
+function myTimer(){
+    var d=new Date();
+    var t=d.toLocaleTimeString();
+    document.getElementById("demo").innerHTML=t;
+}
+function myStopFunction(){
+    clearInterval(myVar);
+}
+
+setTimeout(function(){alert("Hello")},3000);
+
+var r=confirm("按下按钮");
+if (r==true)
+{
+    x="你按下了\"确定\"按钮!";
+}
+else
+{
+    x="你按下了\"取消\"按钮!";
+}
+
+var person=prompt("请输入你的名字","Harry Potter");
+if (person!=null && person!="")
+{
+    x="你好 " + person + "! 今天感觉如何?";
+    document.getElementById("demo").innerHTML=x;
+}
+
+alert("Hello\nHow are you?");
+</script>
+
+</body>
+</html>

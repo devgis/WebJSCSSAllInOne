@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Javascript Class</title>
+</head>
+<body>
+
+<h2>JavaScript 类的方法</h2>
+
+<p>传递参数到 "age()" 方法。</p>
+
+<p id="demo"></p>
+
+<script>
+class Site {
+  constructor(name) {
+    this.sitename = name;
+  }
+  present() {
+    return '我喜欢' + this.sitename;
+  }
+}
+class Runoob extends Site{
+  constructor(name, year) {
+    //this.name = name;
+    super(name); //继承类必须这样 上边的会出错
+
+    this.year = year;
+  }
+  age(x) {
+    return x - this.year;
+  }
+
+  age2() {
+    // date = new Date();  // 错误
+    let date = new Date(); // 正确
+    return date.getFullYear() - this.year;
+  }
+
+  show() {
+    return this.present() + ', 它创建了 ' + this.age + ' 年。';
+  }
+
+  get s_sname() {
+    return this.name;
+  }
+  set s_sname(x) {
+    this.name = x;
+  }
+
+  //静态方法
+  //静态方法是使用 static 关键字修饰的方法，又叫类方法，属于类的，但不属于对象，在实例化对象之前可以通过 类名.方法名 调用静态方法。
+  //静态方法不能在对象上调用，只能在类中调用。
+  static hello(x) {
+    return "Hello " + x.name;
+  }
+}
+ 
+let date = new Date();
+let year = date.getFullYear();
+ 
+//函数声明和类声明之间的一个重要区别在于, 函数声明会提升，类声明不会。
+//你首先需要声明你的类，然后再访问它，否则类似以下的代码将抛出 ReferenceError：
+let runoob = new Runoob("菜鸟教程", 2020);
+document.getElementById("demo").innerHTML=
+"菜鸟教程 " + runoob.age(year) + " 岁了。s_sname:"+runoob.s_sname+" name:"+runoob.name+" Show():"+runoob.show()+" hello():"+Runoob.hello(runoob);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>javascript object</title>
+</head>
+<body>
+
+<script>
+    //创建 JavaScript 对象
+var person=new Object();
+person.firstname="John";
+person.lastname="Doe";
+person.age=50;
+person.eyecolor="blue"; 
+document.write(person.firstname + " is " + person.age + " years old.");
+
+//创建 JavaScript 对象
+var persion2={firstname:"John",lastname:"Doe",age:50,eyecolor:"blue"};
+document.write(persion2)
+
+//使用对象构造器
+function Person(firstname,lastname,age,eyecolor)
+{
+    this.firstname=firstname;
+    this.lastname=lastname;
+    this.age=age;
+    this.eyecolor=eyecolor;
+    //添加方法
+    this.changeName=changeName;
+    function changeName(name)
+    {
+        this.lastname=name;
+    }
+    //return [this.firstname,this.lastname,this.age,this.eyecolor,this] 
+}
+
+
+//prototype
+Person.prototype.name = function() {
+  return this.firstName + " " + this.lastName
+};
+
+var myFather=new Person("John","Doe",50,"blue");
+var myMother=Person("Sally","Rally",48,"green");
+console.log(myFather); // this 输出一个 person 对象
+console.log(myMother); // this 输出 window 对象
+
+console.log(myFather.name()); // this 输出 window 对象
+
+
+//循环访问对象属性
+document.write("循环访问对象属性");
+var str="";
+for (x in myFather)
+{
+    str+=myFather[x]+"\r\n";
+    
+}
+document.write(str);
+document.write("-------------------------------------");
+var a = 999999999999999;   // x 为 999999999999999
+var b = 9999999999999999;  // y 为 10000000000000000
+document.write(a+b);
+document.write("-------------------------------------");
+var y = 0.2+0.1; // 输出结果为 0.30000000000000004
+document.write(y);
+document.write("-------------------------------------");
+var myNumber=128;
+document.write(myNumber.toString(16));   // 返回 80
+document.write("-------------------------------------");
+document.write(myNumber.toString(8));    // 返回 200
+document.write("-------------------------------------");
+document.write(myNumber.toString(2));    // 返回 10000000
+document.write("-------------------------------------");
+var yx = 0377;
+var zx = 0xFF;
+document.write("-------------------------------------");
+document.write(yx); 
+document.write("-------------------------------------");
+document.write(zx); 
+document.write("-------------------------------------");
+var x = 1000 / "Apple";
+document.write(isNaN(x)); // 返回 true
+document.write("-------------------------------------");
+var y = 100 / "1000";
+document.write(isNaN(y)); // 返回 false
+document.write("-------------------------------------");
+var x = 123;
+var y = new Number(123);
+document.write(typeof(x));// 返回 Number
+document.write("-------------------------------------");
+document.write(typeof(y)); // 返回 Object
+document.write("-------------------------------------");
+var x = 123;             
+var y = new Number(123);
+document.write((x === y));// 为 false，因为 x 是一个数字，y 是一个对象
+document.write("-------------------------------------");
+var txt="Hello World!";
+document.write(txt.length);
+document.write("-------------------------------------");
+var txt="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+document.write(txt.length);
+document.write("-------------------------------------");
+var str="Hello world, welcome to the universe.";
+document.write(str.indexOf("welcome"));
+document.write("-------------------------------------");
+var str="Hello world!";
+document.write(str.match("world") + "<br>");
+document.write(str.match("World") + "<br>");
+document.write(str.match("world!"));
+document.write("-------------------------------------");
+str="Please visit Microsoft!"
+document.write(str.replace("Microsoft","Runoob"));
+document.write("-------------------------------------");
+document.write(str);
+document.write("-------------------------------------");
+var txt="Hello World!";       // String
+document.write(txt.toUpperCase());   // txt1 文本会转换为大写
+document.write(txt.toLowerCase());   // txt2 文本会转换为小写
+document.write("-------------------------------------");
+txt="a,b,c,d,e"   // String
+txt.split(",");   // 使用逗号分隔
+txt.split(" ");   // 使用空格分隔
+txt.split("|");   // 使用竖线分隔 
+document.write("-------------------------------------");
+//var txt="We are the so-called "Vikings" from the north.";
+//document.write(txt);
+//在JavaScript中，字符串的开始和停止使用单引号或双引号。这意味着，上面的字符串将被切成： We are the so-called
+
+//解决以上的问题可以使用反斜线来转义引号：
+
+var txt="We are the so-called \"Vikings\" from the north.";
+document.write(txt);
+document.write("-------------------------------------");
+var today = new Date()
+var d1 = new Date("October 13, 1975 11:13:00")
+var d2 = new Date(79,5,24)
+var d3 = new Date(79,5,24,11,33,0)
+document.write(d1);
+document.write("-------------------------------------");
+document.write(d2);
+document.write("-------------------------------------");
+document.write(d3);
+document.write("-------------------------------------");
+var myDate=new Date();
+myDate.setFullYear(2010,0,14);
+document.write(myDate);
+document.write("-------------------------------------");
+var x=new Date();
+x.setFullYear(2100,0,14);
+var today = new Date();
+
+if (x>today)
+{
+    alert("今天是2100年1月14日之前");
+}
+else
+{
+    alert("今天是2100年1月14日之后");
+}
+document.write("-------------------------------------");
+//创建数组
+//1: 常规方式:
+var myCars=new Array();
+myCars[0]="Saab";      
+myCars[1]="Volvo";
+myCars[2]="BMW";
+//2: 简洁方式:
+var myCars=new Array("Saab","Volvo","BMW");
+//3: 字面:
+var myCars=["Saab","Volvo","BMW"];
+//创建新方法
+//原型是JavaScript全局构造函数。它可以构建新Javascript对象的属性和方法。
+Array.prototype.myUcase=function(){
+    for (i=0;i<this.length;i++){
+        this[i]=this[i].toUpperCase();
+    }
+}
+document.write("-------------------------------------");
+var myBoolean=new Boolean();
+document.write("-------------------------------------");
+document.write(Math.PI);
+document.write(Math.sqrt(16));
+document.write("-------------------------------------");
+document.write(Math.round(4.7));
+document.write("-------------------------------------");
+document.write(Math.random());
+document.write("-------------------------------------");
+document.write(Math.floor(Math.random()*11));
+document.write("-------------------------------------");
+var str="Is this all there is?";
+var patt1=/is/gi;
+document.write(str.match(patt1));
+document.write("-------------------------------------");
+document.write("-------------------------------------");
+document.write("-------------------------------------");
+document.write("-------------------------------------");
+document.write("-------------------------------------");
+document.write("-------------------------------------");
+document.write("-------------------------------------");
+document.write("-------------------------------------");
+document.write("-------------------------------------");
+document.write("-------------------------------------");
+document.write("-------------------------------------");
+document.write("-------------------------------------");
+document.write("-------------------------------------");
+document.write("-------------------------------------");
+</script>
+
+</body>
+</html>

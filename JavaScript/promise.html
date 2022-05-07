@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Promise</title>
+</head>
+<body>
+
+<h2>JavaScript 对象</h2>
+
+<p id="demo"></p>
+
+<script>
+    //顺序执行三个程序
+    setTimeout(function () {
+    console.log("First");
+    setTimeout(function () {
+        console.log("Second");
+        setTimeout(function () {
+            console.log("Third");
+        }, 3000);
+    }, 4000);
+}, 1000);
+    //顺序执行三个程序 采用Promise
+new Promise(function (resolve, reject) {
+    setTimeout(function () {
+        console.log("First");
+        resolve();
+    }, 1000);
+}).then(function () {
+    return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            console.log("Second");
+            resolve();
+        }, 4000);
+    });
+}).then(function () {
+    setTimeout(function () {
+        console.log("Third");
+    }, 3000);
+});
+</script>
+
+</body>
+</html>
