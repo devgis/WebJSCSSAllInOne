@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)http://223.86.105.239:802/CommonModule/Organize/OrganizeList.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+	组织机构列表
+</title><link href="http://223.86.105.239:802/Themes/Styles/style.css" rel="stylesheet">
+    <script src="./index_files/jquery-1.8.2.min.js"></script>
+    <script src="./index_files/jquery.treeTable.js" type="text/javascript"></script>
+    <link href="./index_files/jquery.treeTable.css" rel="stylesheet" type="text/css">
+    <script src="./index_files/FunctionJS.js"></script>
+    <script>
+        $(function () {
+            divresize('.ScrollBar', 84);
+            $("#div_OrgChart").height($(window).height() - 83).width('3000px').hide();
+            LoadOrgList();
+            GetClickTableValue();
+        })
+        //加载组织结构列表
+        function LoadOrgList() {
+            getAjax("OrganizeList.html", "action=OrgTreeList", function (data) {
+                $("#TableTree").html(data);
+            })
+            $("#dnd-example").treeTable({
+                initialState: "expanded" //collapsed 收缩 expanded展开的
+            });
+            GetClickTableValue();
+            dndexampleCss();
+        }
+        /**
+        获取table TD值
+        主键ID
+        column:列名
+        **/
+        var OrganizationId = '';
+        var OrganizationName = '';
+        function GetClickTableValue() {
+            $('#dnd-example tbody tr').not('#td').click(function () {
+                $(this).find('td').each(function (i) {
+                    if (i == 0) {
+                        OrganizationName = $(this).text();
+                    }
+                    if (i == 9) {
+                        OrganizationId = $(this).text();
+                    }
+                });
+            });
+        }
+        //新增
+        function add() {
+            var url = "/CommonModule/Organize/OrganizeForm.html?ParentId=" + OrganizationId + '&ParentName=' + escape(OrganizationName);
+            top.openDialog(url, 'OrganizeForm', '组织机构 - 添加', 750, 430, 50, 50);
+        }
+        //编辑
+        function edit() {
+            if (IsEditdata(OrganizationId)) {
+                var url = "/CommonModule/Organize/OrganizeForm.html?key=" + OrganizationId;
+                top.openDialog(url, 'OrganizeForm', '组织机构 - 编辑', 750, 430, 50, 50);
+            }
+        }
+        //删除
+        function Delete() {
+            var key = OrganizationId;
+            if (IsDelData(key)) {
+                var delparm = 'action=Delete&key=' + key;
+                delConfig('OrganizeList.html', delparm);
+            }
+        }
+        //刷新
+        function windowload() {
+            LoadOrgList();
+            OrganizationId = '';
+            OrganizationName = '';
+        }
+    </script>
+</head>
+<body>
+    <form method="post" action="./index_files/index.html" id="form1">
+<div class="aspNetHidden" style="display: none;">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJMzY1NTY5MzU2ZGRuUWp8+0MGiE0h9zz8qnksGi+uy2buGBwwk4AWV7X5lg==">
+</div>
+
+        
+
+<script type="text/javascript">
+    //右击菜单栏
+    
+</script>
+<div class="tools_bar"><a title="刷新当前页面" onclick="Replace();" class="tools_btn"><span><b style="background: url(&#39;/Themes/images/16/arrow_refresh.png&#39;) 50% 4px no-repeat;">刷新</b></span></a><div class="tools_separator"></div><a title="" onclick="add();" class="tools_btn"><span><b style="background: url(&#39;/Themes/images/16/application_add.png&#39;) 50% 4px no-repeat;">新增</b></span></a><a title="" onclick="edit();" class="tools_btn"><span class=""><b style="background: url(&#39;/Themes/images/16/application_edit.png&#39;) 50% 4px no-repeat;">编辑</b></span></a><a title="" onclick="Delete();" class="tools_btn"><span class=""><b style="background: url(&#39;/Themes/images/16/application_delete.png&#39;) 50% 4px no-repeat;">删除</b></span></a><div class="tools_separator"></div><a title="关闭当前窗口" onclick="ThisCloseTab();" class="tools_btn"><span class=""><b style="background: url(&#39;/Themes/images/16/back.png&#39;) 50% 4px no-repeat;">离开</b></span></a></div>
+        <div class="bd" style="margin-top: 1px;">
+            <div class="rightPanelTitle_normal tipstitle_title settingtable bold bd todayInfoPanelTab">
+                <div class="tab_list_top" style="position: absolute">
+                    <div id="OrgTreeTab" class="tab_list bd actived" onclick="$(&#39;#dnd-example&#39;).show();$(&#39;#div_OrgChart&#39;).hide();">组织架构表</div>
+                    <div id="OrgTreechartTab" class="tab_list bd " onclick="$(&#39;#div_OrgChart&#39;).show();$(&#39;#dnd-example&#39;).hide(); $(&#39;#iframe_OrgChart&#39;).attr(&#39;src&#39;, &#39;OrganizeChart.html&#39;);">组织架构图</div>
+                </div>
+            </div>
+            <div class="ScrollBar" style="height: 512px;">
+                <table class="example treeTable" id="dnd-example">
+                    <thead>
+                        <tr>
+                            <td style="width: 230px; padding-left: 20px;">组织机构名称
+                            </td>
+                            <td style="width: 130px;">编码
+                            </td>
+                            <td style="width: 60px; text-align: center;">分类
+                            </td>
+                            <td style="width: 120px; text-align: center;">简称
+                            </td>
+                            <td style="width: 100px; text-align: center;">主负责人
+                            </td>
+                            <td style="width: 100px; text-align: center;">电话
+                            </td>
+                            <td style="width: 100px; text-align: center;">传真
+                            </td>
+                            <td style="width: 60px; text-align: center;">有效
+                            </td>
+                            <td>说明
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody id="TableTree"><tr id="node-0" class="initialized parent expanded"><td style="width: 230px;padding-left:20px;"><span style="margin-left: -15px; padding-left: 15px" class="expander"></span><img src="./index_files/house.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">力软集团</span></td><td style="width: 130px;">1000</td><td style="width: 60px;text-align:center;">集团</td><td style="width: 120px;text-align:center;">总部公司</td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">05e85693-14b0-4582-8063-8fbde85371f0</td></tr><tr id="node-0-1" class="child-of-node-0 initialized parent expanded"><td style="padding-left: 35px;"><span style="margin-left: -15px; padding-left: 15px" class="expander"></span><img src="./index_files/chart_organisation.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">上海分公司</span></td><td style="width: 130px;">1000.01.01</td><td style="width: 60px;text-align:center;">公司</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">31b05701-60ef-405c-87ba-af47049e3f48</td></tr><tr id="node-0-1-1" class="child-of-node-0-1 initialized"><td style="padding-left: 50px;"><img src="./index_files/wand.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">总裁办公室</span></td><td style="width: 130px;">1000.01.01.01</td><td style="width: 60px;text-align:center;">部门</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td>222</td><td style="display:none">fa3c84c3-805a-48de-9588-dcdd64d4d9ab</td></tr><tr id="node-0-1-2" class="child-of-node-0-1 initialized"><td style="padding-left: 50px;"><img src="./index_files/wand.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">人事部</span></td><td style="width: 130px;">1000.01.01.02</td><td style="width: 60px;text-align:center;">部门</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">6f9f996b-e549-425d-b7f1-01b24d886a2a</td></tr><tr id="node-0-1-3" class="child-of-node-0-1 initialized"><td style="padding-left: 50px;"><img src="./index_files/wand.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">财务部</span></td><td style="width: 130px;">1000.01.01.03</td><td style="width: 60px;text-align:center;">部门</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">01bf572a-f6d4-4a58-b29b-361238cd221e</td></tr><tr id="node-0-1-4" class="child-of-node-0-1 initialized"><td style="padding-left: 50px;"><img src="./index_files/wand.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">市场部</span></td><td style="width: 130px;">1000.01.01.04</td><td style="width: 60px;text-align:center;">部门</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">e3c0707a-a67a-4caf-a1cf-b9f18378100c</td></tr><tr id="node-0-1-5" class="child-of-node-0-1 initialized"><td style="padding-left: 50px;"><img src="./index_files/wand.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">行政部</span></td><td style="width: 130px;">1000.01.01.05</td><td style="width: 60px;text-align:center;">部门</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">f1c24b87-e007-4399-be49-fb1ed07c96d6</td></tr><tr id="node-0-1-6" class="child-of-node-0-1 initialized parent expanded tdhover"><td style="padding-left: 50px;"><span style="margin-left: -15px; padding-left: 15px" class="expander"></span><img src="./index_files/wand.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">IT信息部</span></td><td style="width: 130px;">1000.01.01.06</td><td style="width: 60px;text-align:center;">部门</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">ce65969e-0fa6-4697-acbc-d5bdc417fe99</td></tr><tr id="node-0-1-6-1" class="child-of-node-0-1-6 initialized"><td style="padding-left: 65px;"><img src="./index_files/users.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">软件一组</span></td><td style="width: 130px;">1000.01.01.06.01</td><td style="width: 60px;text-align:center;">工作组</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">3d7259f9-7991-4c58-8064-27f020bf0659</td></tr><tr id="node-0-1-6-2" class="child-of-node-0-1-6 initialized"><td style="padding-left: 65px;"><img src="./index_files/users.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">软件二组</span></td><td style="width: 130px;">1000.01.01.06.02</td><td style="width: 60px;text-align:center;">工作组</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">75789b3b-acbd-4dba-a70f-d16d7d12c634</td></tr><tr id="node-0-1-6-3" class="child-of-node-0-1-6 initialized"><td style="padding-left: 65px;"><img src="./index_files/users.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">软件三组</span></td><td style="width: 130px;">1000.01.01.06.03</td><td style="width: 60px;text-align:center;">工作组</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">28a1477b-9d4b-46c6-95fb-c56f1f160b9d</td></tr><tr id="node-0-1-6-4" class="child-of-node-0-1-6 initialized"><td style="padding-left: 65px;"><img src="./index_files/users.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">软件四组</span></td><td style="width: 130px;">1000.01.01.06.04</td><td style="width: 60px;text-align:center;">工作组</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">f32d187b-31fe-404e-b4ba-1a5a577d896f</td></tr><tr id="node-0-1-6-5" class="child-of-node-0-1-6 initialized"><td style="padding-left: 65px;"><img src="./index_files/users.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">技术研发组</span></td><td style="width: 130px;">1000.01.01.06.05</td><td style="width: 60px;text-align:center;">工作组</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">99e0d915-a686-4922-9edd-c8f0ed6e79e9</td></tr><tr id="node-0-1-6-6" class="child-of-node-0-1-6 initialized"><td style="padding-left: 65px;"><img src="./index_files/users.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">技术测试组</span></td><td style="width: 130px;">1000.01.01.06.06</td><td style="width: 60px;text-align:center;">工作组</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">d3f96507-1bda-4127-bda1-ca60c7f4ce72</td></tr><tr id="node-0-1-6-7" class="child-of-node-0-1-6 initialized"><td style="padding-left: 65px;"><img src="./index_files/users.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">技术工程组</span></td><td style="width: 130px;">1000.01.01.06.07</td><td style="width: 60px;text-align:center;">工作组</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">b5221eb2-6b28-4104-b327-845d0021172b</td></tr><tr id="node-0-1-7" class="child-of-node-0-1 initialized"><td style="padding-left: 50px;"><img src="./index_files/wand.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">采购部</span></td><td style="width: 130px;">1000.01.01.07</td><td style="width: 60px;text-align:center;">部门</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">d8f15b36-9aef-4fac-9115-693017ae0b19</td></tr><tr id="node-0-1-8" class="child-of-node-0-1 initialized parent expanded"><td style="padding-left: 50px;"><span style="margin-left: -15px; padding-left: 15px" class="expander"></span><img src="./index_files/wand.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">生产部</span></td><td style="width: 130px;">1000.01.01.08</td><td style="width: 60px;text-align:center;">部门</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">00fdb9af-2f93-476a-8172-d987873f6697</td></tr><tr id="node-0-1-8-1" class="child-of-node-0-1-8 initialized"><td style="padding-left: 65px;"><img src="./index_files/users.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">仓库组</span></td><td style="width: 130px;">1000.01.01.08.01</td><td style="width: 60px;text-align:center;">工作组</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">4ec5c981-9f75-48c3-8217-03eb68db11b8</td></tr><tr id="node-0-1-8-2" class="child-of-node-0-1-8 initialized"><td style="padding-left: 65px;"><img src="./index_files/users.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">作业组</span></td><td style="width: 130px;">1000.01.01.08.02</td><td style="width: 60px;text-align:center;">工作组</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">75cdb572-da20-4e52-b727-be7c65ec4c72</td></tr><tr id="node-0-1-8-3" class="child-of-node-0-1-8 initialized"><td style="padding-left: 65px;"><img src="./index_files/users.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">检验组</span></td><td style="width: 130px;">1000.01.01.10.03</td><td style="width: 60px;text-align:center;">工作组</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">2c5d2b38-2300-411d-979f-b65eb25846aa</td></tr><tr id="node-0-1-9" class="child-of-node-0-1 initialized parent expanded"><td style="padding-left: 50px;"><span style="margin-left: -15px; padding-left: 15px" class="expander"></span><img src="./index_files/wand.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">销售部</span></td><td style="width: 130px;">1000.01.01.09</td><td style="width: 60px;text-align:center;">部门</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">901659a9-e671-4b2f-b7fa-0d77144fb4c3</td></tr><tr id="node-0-1-9-1" class="child-of-node-0-1-9 initialized"><td style="padding-left: 65px;"><img src="./index_files/users.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">大客户组</span></td><td style="width: 130px;">1000.01.01.09.01</td><td style="width: 60px;text-align:center;">工作组</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">39764083-a0bd-4cd6-8ead-3ea689831ed3</td></tr><tr id="node-0-1-9-2" class="child-of-node-0-1-9 initialized"><td style="padding-left: 65px;"><img src="./index_files/users.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">销售一组</span></td><td style="width: 130px;">1000.01.01.09.02</td><td style="width: 60px;text-align:center;">工作组</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">65a13460-75a1-4753-98f2-0d810f00bf43</td></tr><tr id="node-0-1-9-3" class="child-of-node-0-1-9 initialized"><td style="padding-left: 65px;"><img src="./index_files/users.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">销售二组</span></td><td style="width: 130px;">1000.01.01.09.03</td><td style="width: 60px;text-align:center;">工作组</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">cd235612-a279-45df-aaa8-d25cbbbab87d</td></tr><tr id="node-0-2" class="child-of-node-0 initialized parent expanded"><td style="padding-left: 35px;"><span style="margin-left: -15px; padding-left: 15px" class="expander"></span><img src="./index_files/chart_organisation.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">福建分公司</span></td><td style="width: 130px;">1000.01.02</td><td style="width: 60px;text-align:center;">公司</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">c62c6939-74dc-4f67-ac5b-5ab1c2b0d85b</td></tr><tr id="node-0-2-1" class="child-of-node-0-2 initialized"><td style="padding-left: 50px;"><img src="./index_files/wand.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">财务部</span></td><td style="width: 130px;">1000.01.02.02</td><td style="width: 60px;text-align:center;">部门</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">e572a3bd-8aba-4ddd-a794-a14303692df1</td></tr><tr id="node-0-3" class="child-of-node-0 initialized"><td style="padding-left: 35px;"><img src="./index_files/chart_organisation.png" style="vertical-align: middle;" alt=""><span style="padding-left:8px;">北京分公司</span></td><td style="width: 130px;">1000-02-01</td><td style="width: 60px;text-align:center;">公司</td><td style="width: 120px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 100px;text-align:center;"></td><td style="width: 60px;text-align:center;"><img src="./index_files/checkmark.gif"></td><td></td><td style="display:none">ef5e8b48-5ef4-4e07-bd70-d5c1e6414b20</td></tr></tbody>
+                </table>
+                <div id="div_OrgChart" style="height: 556px; width: 3000px; display: none;">
+                    <iframe id="iframe_OrgChart" name="iframe_OrgChart" src="" scrolling="auto" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</body></html>

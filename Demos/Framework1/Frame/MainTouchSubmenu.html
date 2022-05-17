@@ -1,0 +1,105 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from 223.86.105.239:801/Frame/MainTouchSubmenu.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 22 Nov 2013 07:41:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" /><title>
+	子功能选项
+</title><link href="../Themes/Styles/Touch.css" rel="stylesheet" /><link href="../Themes/Styles/Style-2.css" rel="stylesheet" type="text/css" />
+    <script src="../Themes/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="../Themes/Scripts/FunctionJS.js"></script>
+    <script src="MainTouch.js"></script>
+    <script>
+        $(function () {
+            top.LoadMune();
+        })
+        //加载菜单导航
+        function LoadSubmenu(MenuJson, menu_id, menu_Name) {
+            $("#LblMenuName").html(menu_Name);
+            $("#htmlsubmenu").empty();
+            $.each(MenuJson, function (i) {
+                if (MenuJson[i].ParentId == menu_id) {
+                    var img = MenuJson[i].Img;
+                    if (img == "") {
+                        img = "20130826055929496_e2.html";
+                    }
+                    var submenu = "<div title=\"" + MenuJson[i].Description + "\" onclick=\"AddTabMenu('" + MenuJson[i].MenuId + "','" + MenuJson[i].NavigateUrl + "','" + MenuJson[i].FullName + "','" + img + "','true')\" class=\"shortcuticons\">";
+                    submenu += "<b class=\"b1\"></b><b class=\"b2 d1\"></b><b class=\"b3 d1\"></b><b class=\"b4 d1\"></b>";
+                    submenu += "<div class=\"b d1 k\">";
+                    submenu += "<img src=\"/Themes/Images/32/" + img + "\" alt=\"\" /><br/>" + MenuJson[i].FullName + "";
+                    submenu += "</div>";
+                    submenu += "<b class=\"b4b d1\"></b><b class=\"b3b d1\"></b><b class=\"b2b d1\"></b><b class=\"b1b\"></b>";
+                    submenu += "</div>";
+                    $("#htmlsubmenu").append(submenu);
+                }
+            });
+            resize_Table();
+            $('#htmlsubmenu div').hover(function () {
+                $(this).find(".d1").addClass("d1select");
+                $(this).find(".b1").css("background", "#ccc");
+                $(this).find(".b1b").css("background", "#ccc");
+                $(this).find(".b2").css("border-left", "1px solid #ccc");
+                $(this).find(".b3").css("border-left", "1px solid #ccc");
+                $(this).find(".b4").css("border-left", "1px solid #ccc");
+                $(this).find(".b2b").css("border-left", "1px solid #ccc");
+                $(this).find(".b3b").css("border-left", "1px solid #ccc");
+                $(this).find(".b4b").css("border-left", "1px solid #ccc");
+                $(this).find(".b").css("border-left", "1px solid #ccc");
+                $(this).find(".b2").css("border-right", "1px solid #ccc");
+                $(this).find(".b3").css("border-right", "1px solid #ccc");
+                $(this).find(".b4").css("border-right", "1px solid #ccc");
+                $(this).find(".b2b").css("border-right", "1px solid #ccc");
+                $(this).find(".b3b").css("border-right", "1px solid #ccc");
+                $(this).find(".b4b").css("border-right", "1px solid #ccc");
+                $(this).find(".b").css("border-right", "1px solid #ccc");
+            }, function () {
+                $(this).find(".d1").removeClass("d1select");
+                $(this).find(".b1").css("background", "#fff");
+                $(this).find(".b1b").css("background", "#fff");
+                $(this).find(".b2").css("border-left", "1px solid #fff");
+                $(this).find(".b3").css("border-left", "1px solid #fff");
+                $(this).find(".b4").css("border-left", "1px solid #fff");
+                $(this).find(".b2b").css("border-left", "1px solid #fff");
+                $(this).find(".b3b").css("border-left", "1px solid #fff");
+                $(this).find(".b4b").css("border-left", "1px solid #fff");
+                $(this).find(".b").css("border-left", "1px solid #fff");
+                $(this).find(".b2").css("border-right", "1px solid #fff");
+                $(this).find(".b3").css("border-right", "1px solid #fff");
+                $(this).find(".b4").css("border-right", "1px solid #fff");
+                $(this).find(".b2b").css("border-right", "1px solid #fff");
+                $(this).find(".b3b").css("border-right", "1px solid #fff");
+                $(this).find(".b4b").css("border-right", "1px solid #fff");
+                $(this).find(".b").css("border-right", "1px solid #fff");
+            });
+        }
+        function resize_Table() {
+            resizeU();
+            $(window).resize(resizeU);
+            function resizeU() {
+                $("#htmlsubmenu").css("position", "absolute");
+                $("#htmlsubmenu").css("left", 30);
+                $("#htmlsubmenu").css("top", 50);
+            }
+        }
+    </script>
+</head>
+<body style="margin: 0px; padding: 0px;">
+    <form method="post" action="http://223.86.105.239:801/Frame/MainTouchSubmenu.html" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJMjkwNDY2NjgzZGSdYtKAaA0NOsgqvHhiyVrchchOLNuGs5To1a2CfXwUMg==" />
+</div>
+
+        <div class="box-title" style="width: 100%;">
+            子功能项 -
+            <span id="LblMenuName"></span>
+        </div>
+        <div id="htmlsubmenu">
+        </div>
+    </form>
+</body>
+
+<!-- Mirrored from 223.86.105.239:801/Frame/MainTouchSubmenu.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 22 Nov 2013 07:41:17 GMT -->
+</html>

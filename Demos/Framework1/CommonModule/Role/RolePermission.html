@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- saved from url=(0155)http://223.86.105.239:802/CommonModule/Role/RolePermission.html?OrganizationId=31b05701-60ef-405c-87ba-af47049e3f48&FullName=%u4E0A%u6D77%u5206%u516C%u53F8 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+	角色权限
+</title><link href="http://223.86.105.239:802/Themes/Styles/style.css" rel="stylesheet">
+    <script src="./RolePermission_files/jquery-1.8.2.min.js"></script>
+    <script src="./RolePermission_files/jquery.cookie.js"></script>
+    <link href="http://223.86.105.239:802/Themes/Scripts/TreeView/jquery.treeview.css" rel="stylesheet">
+    <script src="./RolePermission_files/jquery.treeview.js"></script>
+    <script src="./RolePermission_files/FunctionJS.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var OrganizationId = GetQuery('OrganizationId');//公司主键
+        var OrganizationName = unescape(GetQuery('FullName'));  //公司名称
+        $(function () {
+            iframeresize(1);
+            divresize('.div-body', 30);
+            divresize('.ScrollBar', 65);
+            InitRoles();
+            $("#OrganizationName").text(OrganizationName);
+            treeAttrCss();
+        });
+        //加载角色列表
+        var RoleId = "";
+        var RoleName = "";
+        function InitRoles() {
+            getAjax('RolePermission.html', "action=InitRoles&OrganizationId=" + OrganizationId, function (data) {
+                var json = eval("(" + data + ")");
+                var index = 0;
+                var strclass = "";
+                for (var i = 0; i < json.JSON.length; i++) {
+                    var list = json.JSON[i];
+                    if (index == 0) {
+                        strclass = "collapsableselected";
+                        RoleId = list.RoleId;
+                        RoleName = list.FullName + "(" + list.Code + ")";
+                        Chainingiframe();
+                    }
+                    else
+                        strclass = "";
+                    $("#RoleTree").append("<li><div class='" + strclass + "' id='" + list.RoleId + "'><img src='/Themes/images/16/group.png' style='vertical-align: middle;' alt=''/><span>" + list.FullName + "(" + list.Code + ")" + "</span></div></li>");
+                    index++;
+                }
+                if (json.JSON.length == 0) {
+                    $("#RoleTree").append("<li><div><span style='color:red;'>暂无角色</span></div>");
+                }
+            });
+            $("#RoleName").html(RoleName);
+            $(".strTree li div").click(function () {
+                RoleId = $(this).attr('id');
+                RoleName = $(this).find('span').html();
+                $("#RoleName").html(RoleName);
+                Chainingiframe();
+            });
+        }
+        //链接成员页面
+        function Chainingiframe() {
+            $(".tab_list_top").find('div').removeClass('actived');
+            $("#tabRoleMember").addClass('actived');
+            $("#iframeRoleMember").attr("src", "MemberList.html?RoleId=" + RoleId + '&RoleName=' + escape(RoleName) + '&OrganizationId=' + OrganizationId + '&FullName=' + escape(OrganizationName));
+            Tabchange('RoleMemberPanel');
+        }
+        //链接模块权限页面
+        function ChainingiframeModule() {
+            $("#iframeModule").attr("src", "ModulePermission.html?RoleId=" + RoleId);
+        }
+        //链接按钮权限页面
+        function ChainingiframeButton() {
+            $("#iframeButton").attr("src", "ButtonPermission.html?RoleId=" + RoleId);
+        }
+        //链接数据权限页面
+        function ChainingiframeData() {
+            $("#iframeData").attr("src", "../DataPermission/DataPermissionList.html?RoleId=" + RoleId);
+        }
+    </script>
+</head>
+<body>
+    <form method="post" action="http://223.86.105.239:802/CommonModule/Role/RolePermission.html?OrganizationId=31b05701-60ef-405c-87ba-af47049e3f48&FullName=%u4e0a%u6d77%u5206%u516c%u53f8" id="form1">
+<div class="aspNetHidden" style="display: none;">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTQzODkxODIyMWRkWUKbHExVn9rUsc45YuQdA5k3ajt3IAoEYWC1o3+wKg8=">
+</div>
+
+        <div id="iframeMainContent" style="height: 595px;">
+            <div class="iframeleft">
+                <div class="btnbartitle">
+                    <div>
+                        角色
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="div-body" style="height: 566px;">
+                    <ul class="black strTree treeview">
+                        <li class="collapsable lastCollapsable"><div class="hitarea collapsable-hitarea lastCollapsable-hitarea" style="cursor: pointer;"></div>
+                            <div style="cursor: pointer;">
+                                <img src="./RolePermission_files/chart_organisation.png" style="vertical-align: middle;" alt=""><span id="OrganizationName">上海分公司</span>
+                            </div>
+                            <ul id="RoleTree"><li><div class="collapsableselected" id="c3aaa9e8-b707-40ec-a88c-3df260c38bca" style="cursor: pointer;"><img src="./RolePermission_files/group.png" style="vertical-align: middle;" alt=""><span>系统管理员(100001)</span></div></li><li><div class="" id="cf92fb54-b9da-4ce9-9331-a5c8069c46c5" style="cursor: pointer;"><img src="./RolePermission_files/group.png" style="vertical-align: middle;" alt=""><span>用户管理员(100002)</span></div></li><li><div class="" id="d82df1c9-985a-42ed-96ab-e78d858ce6cd" style="cursor: pointer;"><img src="./RolePermission_files/group.png" style="vertical-align: middle;" alt=""><span>系统配置员(100003)</span></div></li><li><div class="" id="06ab50bd-f33e-4c87-95d0-1db5201f0039" style="cursor: pointer;"><img src="./RolePermission_files/group.png" style="vertical-align: middle;" alt=""><span>业务管理员(100004)</span></div></li><li><div class="" id="14e9cd2c-b6c7-48e7-83e9-6c823b922f4b" style="cursor: pointer;"><img src="./RolePermission_files/group.png" style="vertical-align: middle;" alt=""><span>财务主管(100005)</span></div></li><li><div class="" id="7425db08-64ce-4380-ab8d-9021ea074b78" style="cursor: pointer;"><img src="./RolePermission_files/group.png" style="vertical-align: middle;" alt=""><span>开发人员(100006)</span></div></li><li><div class="" id="eb19e72f-2356-4f54-8bd8-d23c349dd35b" style="cursor: pointer;"><img src="./RolePermission_files/group.png" style="vertical-align: middle;" alt=""><span>测试人员(100007)</span></div></li><li><div class="" id="d0a61fac-f54c-42dd-9193-f858717feb34" style="cursor: pointer;"><img src="./RolePermission_files/group.png" style="vertical-align: middle;" alt=""><span>董事长(100008)</span></div></li><li class="last"><div class="" id="b237853e-6b0b-4971-92f5-da7815918053" style="cursor: pointer;"><img src="./RolePermission_files/group.png" style="vertical-align: middle;" alt=""><span>人事主管(100009)</span></div></li></ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="iframeContent">
+                <div class="btnbartitle">
+                    <div>
+                        角色授权 - <span id="RoleName">系统管理员(100001)</span></div>
+                </div>
+                <div class="bd">
+                    <div class="tipstitle_title settingtable bold bd todayInfoPanelTab rightPanelTitle_normal">
+                        <div class="tab_list_top" style="position: absolute">
+                            <div id="tabRoleMember" class="tab_list bd actived" onclick="Tabchange(&#39;RoleMemberPanel&#39;)">角色成员</div>
+                            <div class="tab_list bd" onclick="Tabchange(&#39;ModulePanel&#39;);ChainingiframeModule()">模块权限</div>
+                            <div class="tab_list bd" onclick="Tabchange(&#39;ButtonPanel&#39;);ChainingiframeButton()">按钮权限</div>
+                            <div class="tab_list bd" onclick="Tabchange(&#39;DataPanel&#39;);ChainingiframeData()">数据权限</div>
+                            <div class="tab_list bd" onclick="Tabchange(&#39;FilePanel&#39;)">文件权限</div>
+                        </div>
+                    </div>
+                    <div class="ScrollBar" style="margin-left: 1px; margin-top: 1px; height: 531px;">
+                        <div id="RoleMemberPanel" class="tabPanel" style="height: 99.6%; display: block;">
+                            <iframe id="iframeRoleMember" name="iframeRoleMember" scrolling="auto" frameborder="0" width="100%" height="100%" src="./RolePermission_files/MemberList.htm"></iframe>
+                        </div>
+                        <div id="ModulePanel" class="tabPanel" style="height: 99.6%; display: none;">
+                            <iframe id="iframeModule" name="iframeModule" scrolling="auto" frameborder="0" width="100%" height="100%"></iframe>
+                        </div>
+                        <div id="ButtonPanel" class="tabPanel" style="height: 99.6%; display: none;">
+                            <iframe id="iframeButton" name="iframeButton" scrolling="auto" frameborder="0" width="100%" height="100%"></iframe>
+                        </div>
+                        <div id="DataPanel" class="tabPanel" style="height: 99.6%; display: none;">
+                            <iframe id="iframeData" name="iframeData" scrolling="auto" frameborder="0" width="100%" height="100%"></iframe>
+                        </div>
+                        <div id="FilePanel" class="tabPanel" style="display: none;">
+                            文件权限，正在开发
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</body></html>

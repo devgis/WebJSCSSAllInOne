@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)http://223.86.105.239:802/CommonModule/InterfaceManage/IAuthorizationList.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+	系统接口访问授权
+</title><link href="http://223.86.105.239:802/Themes/Styles/style.css" rel="stylesheet">
+    <script src="./IAuthorizationList_files/jquery-1.8.2.min.js"></script>
+    <script src="./IAuthorizationList_files/jquery-ui.min.js"></script>
+    <script src="./IAuthorizationList_files/pqgrid.min.js" charset="GBK"></script>
+    <link href="http://223.86.105.239:802/Themes/Scripts/PqGrid/pqgrid.min.css" rel="stylesheet">
+    <script src="./IAuthorizationList_files/FunctionJS.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            ListGrid();
+        });
+        // 给日期类对象添加日期差方法，返回日期与diff参数日期的时间差，单位为天 
+        Date.prototype.diff = function (date) {
+            return (date.getTime() - this.getTime()) / (24 * 60 * 60 * 1000);
+        }
+        /**加载表格函数**/
+        function ListGrid() {
+            var Parm_Key_Value = $("#query").val() + "☻" + $("#keywords").val() + "≌";
+            //url：请求地址
+            var url = "IAuthorizationList.html?action=GridBindList&Parm_Key_Value=" + escape(Parm_Key_Value);
+            //colM：表头名称
+            var colM = [
+                { title: "系统接口访问主键", width: 100, align: "left", hidden: true },
+                { title: "编号", width: 100, align: "center" },
+                { title: "授权用户", width: 110, align: "left" },
+                { title: "生效日期", width: 140, align: "center" },
+                { title: "过期日期", width: 140, align: "center" },
+                {
+                    title: "剩余天数", width: 70, align: "center",
+                    render: function (ui) {
+                        var rowData = ui.rowData;
+                        var value = rowData[5];
+                        var now = new Date();
+                        var date = new Date(value);
+                        return parseInt(now.diff(date)) + 1
+                    }
+                },
+                {
+                    title: "有效", width: 100, align: "center",
+                    render: function (ui) {
+                        var rowData = ui.rowData;
+                        var value = rowData[6];
+                        if (value == '0')
+                            return "<img src='/Themes/Images/checknomark.gif'/>";
+                        else
+                            return "<img src='/Themes/Images/checkmark.gif'/>";
+                    }
+                },
+                { title: "授权模块代码", width: 300, align: "left" },
+                { title: "描述", width: 300, align: "left" }
+
+            ];
+            //sort：要显示字段,数组对应
+            var sort = [
+                "IAccessId",
+                "Code",
+                "AuthorizationUserName",
+                "StartDate",
+                "StartDate",
+                "EndDate",
+                "Enabled",
+                "AuthorizationCode",
+                "Description"
+            ];
+            PQLoadGridNoPage("#grid_paging", url, colM, sort)
+            $("#grid_paging").pqGrid({
+                freezeCols: 7,
+                title: "<img src='/Themes/Images/32/202323.png' width='25' height='25' style=\"vertical-align: middle;\" />系统接口访问授权用户列表"
+            });
+            pqGridResizefixed("#grid_paging", $(window).height() - 82, +15);
+        }
+        //新增
+        function add() {
+            var url = "/CommonModule/InterfaceManage/IAuthorizationForm.html";
+            top.openDialog(url, 'IAuthorizationForm', '系统接口访问授权 - 添加', 450, 330, 50, 50);
+        }
+        //编辑
+        function edit() {
+            var key = GetPqGridRowValue("#grid_paging", 0);
+            if (IsEditdata(key)) {
+                var url = "/CommonModule/InterfaceManage/IAuthorizationForm.html?key=" + key;
+                top.openDialog(url, 'IAuthorizationForm', '系统接口访问授权 - 编辑', 450, 330, 50, 50);
+            }
+        }
+        //删除
+        function Delete() {
+            var key = GetPqGridRowValue("#grid_paging", 0);
+            if (IsDelData(key)) {
+                var delparm = 'action=Delete&key=' + key;
+                delConfig('IAuthorizationList.html', delparm);
+            }
+        }
+        //刷新
+        function windowload() {
+            $("#grid_paging").pqGrid("refreshDataAndView");
+        }
+    </script>
+</head>
+<body>
+    <form method="post" action="./IAuthorizationList_files/IAuthorizationList.html" id="form1">
+<div class="aspNetHidden" style="display: none;">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTk0MzE0OTYyM2RklIWL1IdPhQslfFZndamLwEu79gvuA1JGNrNTExyQWeE=">
+</div>
+
+<div class="aspNetHidden" style="display: none;">
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwLb+ZCuAwL/+OneAgLd5ebCBhcW1apeoqQulDq50vcacEX7Q97hUvERzupGvP/IaibP">
+</div>
+        
+
+<script type="text/javascript">
+    //右击菜单栏
+    
+</script>
+<div class="tools_bar"><a title="刷新当前页面" onclick="Replace();" class="tools_btn"><span><b style="background: url(&#39;/Themes/images/16/arrow_refresh.png&#39;) 50% 4px no-repeat;">刷新</b></span></a><div class="tools_separator"></div><a title="" onclick="add();" class="tools_btn"><span><b style="background: url(&#39;/Themes/images/16/application_add.png&#39;) 50% 4px no-repeat;">新增</b></span></a><a title="" onclick="edit();" class="tools_btn"><span class=""><b style="background: url(&#39;/Themes/images/16/application_edit.png&#39;) 50% 4px no-repeat;">编辑</b></span></a><a title="" onclick="Delete();" class="tools_btn"><span class=""><b style="background: url(&#39;/Themes/images/16/application_delete.png&#39;) 50% 4px no-repeat;">删除</b></span></a><div class="tools_separator"></div><a title="关闭当前窗口" onclick="ThisCloseTab();" class="tools_btn"><span><b style="background: url(&#39;/Themes/images/16/back.png&#39;) 50% 4px no-repeat;">离开</b></span></a></div>
+        <div class="btnbarcontetn" style="margin-top: 1px; background: #fff">
+            <div>
+                <table border="0" class="frm-find" style="height: 45px;">
+                    <tbody><tr>
+                        <th>查询条件：
+                        </th>
+                        <td>
+                            <select name="query" id="query" class="select" style="width: 70px">
+	<option value="Code">编号</option>
+	<option value="AuthorizationUserName">授权用户</option>
+</select>
+                        </td>
+                        <th>关键字：
+                        </th>
+                        <td>
+                            <input name="keywords" type="text" id="keywords" class="txt" style="width: 200px">
+                        </td>
+                        <td>
+                            <input id="btnSearch" type="button" class="btnSearch" value="搜 索" onclick="ListGrid()">
+                        </td>
+                    </tr>
+                </tbody></table>
+            </div>
+        </div>
+        <div id="grid_paging" style="margin-top: 1px; width: 1365px; height: 498px;" class="pq-grid ui-widget ui-widget-content ui-corner-all"><div class="pq-grid-top ui-widget-header ui-corner-top">		<div class="pq-grid-title"><img src="./IAuthorizationList_files/202323.png" width="25" height="25" style="vertical-align: middle;">系统接口访问授权用户列表</div></div>	<div class="pq-grid-inner" tabindex="0" style="height: 462px;"><div class="pq-grid-right"> 		<div class="pq-header-outer ui-widget-header" style="height: 27px;">			<span class="pq-grid-header ui-state-default" style="width: 717px; z-index: 1;"><table class="pq-grid-header-table" cellpadding="0" cellspacing="0"><tbody><tr><td style="width:51px;"></td><td style="width:101px;"></td><td style="width:111px;"></td><td style="width:141px;"></td><td style="width:141px;"></td><td style="width:71px;"></td><td style="width:101px;"></td><td style="width:301px;"></td><td style="width:301px;"></td></tr><tr><td class="pq-grid-number-col" rowspan="1">				<div class="pq-grid-header-table-div">&nbsp;</div></td><td pq-grid-col-indx="1" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">编号<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="2" class="pq-grid-col" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">授权用户<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="3" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">生效日期<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="4" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">过期日期<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="5" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">剩余天数<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="6" class="pq-grid-col pq-align-center pq-last-freeze-col" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">有效<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="7" class="pq-grid-col" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">授权模块代码<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="8" class="pq-grid-col" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">描述<span class="pq-col-sort-icon">&nbsp;</span></div></td></tr></tbody></table><div pq-grid-col-indx="1" class="pq-grid-col-resize-handle ui-draggable" style="left: 142px; height: 29px;">&nbsp;</div><div pq-grid-col-indx="2" class="pq-grid-col-resize-handle ui-draggable" style="left: 253px; height: 29px;">&nbsp;</div><div pq-grid-col-indx="3" class="pq-grid-col-resize-handle ui-draggable" style="left: 394px; height: 29px;">&nbsp;</div><div pq-grid-col-indx="4" class="pq-grid-col-resize-handle ui-draggable" style="left: 535px; height: 29px;">&nbsp;</div><div pq-grid-col-indx="5" class="pq-grid-col-resize-handle ui-draggable" style="left: 606px; height: 29px;">&nbsp;</div><div pq-grid-col-indx="6" class="pq-grid-col-resize-handle ui-draggable" style="left: 707px; height: 29px;">&nbsp;</div></span><span class="pq-grid-header ui-state-default" style="left: 0px;"><table class="pq-grid-header-table" cellpadding="0" cellspacing="0"><tbody><tr><td style="width:51px;"></td><td style="width:101px;"></td><td style="width:111px;"></td><td style="width:141px;"></td><td style="width:141px;"></td><td style="width:71px;"></td><td style="width:101px;"></td><td style="width:301px;"></td><td style="width:301px;"></td></tr><tr><td class="pq-grid-number-col" rowspan="1">				<div class="pq-grid-header-table-div">&nbsp;</div></td><td pq-grid-col-indx="1" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">编号<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="2" class="pq-grid-col" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">授权用户<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="3" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">生效日期<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="4" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">过期日期<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="5" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">剩余天数<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="6" class="pq-grid-col pq-align-center pq-last-freeze-col" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">有效<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="7" class="pq-grid-col" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">授权模块代码<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="8" class="pq-grid-col" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">描述<span class="pq-col-sort-icon">&nbsp;</span></div></td></tr></tbody></table><div pq-grid-col-indx="7" class="pq-grid-col-resize-handle ui-draggable" style="left: 1008px; height: 29px;">&nbsp;</div><div pq-grid-col-indx="8" class="pq-grid-col-resize-handle ui-draggable" style="left: 1309px; height: 29px;">&nbsp;</div></span>		</div>		<div class="pq-cont-right">		<div class="pq-cont" style="height: 434px;"><table class="pq-grid-table pq-grid-td-border-right pq-grid-td-border-bottom " cellpadding="0" cellspacing="0" style="margin-bottom: 0px;"><tbody><tr class="pq-row-hidden"><td style="width:51px;"></td><td style="width:101px;" pq-top-col-indx="1"></td><td style="width:111px;" pq-top-col-indx="2"></td><td style="width:141px;" pq-top-col-indx="3"></td><td style="width:141px;" pq-top-col-indx="4"></td><td style="width:71px;" pq-top-col-indx="5"></td><td style="width:101px;" pq-top-col-indx="6"></td><td style="width:301px;" pq-top-col-indx="7"></td><td style="width:301px;" pq-top-col-indx="8"></td></tr><tr pq-row-indx="0" class="pq-grid-row pq-row-select ui-state-highlight"><td style="width:50px;" class="pq-grid-number-cell ui-state-default">		<div class="pq-td-div">1</div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="1">			<div class="pq-td-div">10001</div></td><td class="pq-grid-cell " style="" pq-col-indx="2">			<div class="pq-td-div">佘赐雄|admin</div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="3">			<div class="pq-td-div">2013/11/2 0:00:00</div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="4">			<div class="pq-td-div">2013/11/2 0:00:00</div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="5">			<div class="pq-td-div">346</div></td><td class="pq-grid-cell  pq-align-center pq-last-freeze-col" style="" pq-col-indx="6">			<div class="pq-td-div"><img src="./IAuthorizationList_files/checkmark.gif"></div></td><td class="pq-grid-cell " style="" pq-col-indx="7">			<div class="pq-td-div">Authority:true;Workflow:false;DataSwap:false;</div></td><td class="pq-grid-cell " style="" pq-col-indx="8">			<div class="pq-td-div">测试系统接口访问</div></td></tr></tbody></table></div>		</div> 		</div><div class="pq-hvscroll-square ui-widget-content"></div><div class="pq-vscroll pq-scrollbar-vert" style="height: 417px; bottom: 17px; display: none;"><div class="top-btn pq-sb-btn"></div>			<div class="pq-sb-slider ui-draggable" style="height: 350px; top: 17px; display: none;">				<div class="vert-slider-top"></div>				<div class="vert-slider-bg" style="height: 168px;"></div>				<div class="vert-slider-center"></div>				<div class="vert-slider-bg" style="height: 168px;"></div>				<div class="vert-slider-bottom"></div>			</div>		<div class="bottom-btn pq-sb-btn"></div></div><div class="pq-hscroll pq-scrollbar-horiz" style="width: 648px; right: 0px;"><div class="left-btn pq-sb-btn"></div>			<div class="pq-sb-slider pq-sb-slider-h ui-draggable" style="width: 546px; left: 17px;">				<span class="horiz-slider-left"></span><span class="horiz-slider-bg" style="width: 266px;"></span><span class="horiz-slider-center"></span><span class="horiz-slider-bg" style="width: 266px;"></span><span class="horiz-slider-right"></span>			</div>		<div class="right-btn pq-sb-btn"></div></div></div>	<div class="pq-grid-bottom ui-corner-bottom" style="display: none;">	<div class="pq-grid-footer">&nbsp;</div>	</div></div>
+    </form>
+
+
+</body></html>

@@ -1,0 +1,72 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from 223.86.105.239:802/CommonModule/DataBase/DataBaseTree.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 22 Nov 2013 04:36:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	对象资源管理器
+</title><link href="../../Themes/Styles/style.css" rel="stylesheet" />
+    <script src="../../Themes/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="../../Themes/Scripts/TreeView/jquery.cookie.js"></script>
+    <link href="../../Themes/Scripts/TreeView/jquery.treeview.css" rel="stylesheet" />
+    <script src="../../Themes/Scripts/TreeView/jquery.treeview.js"></script>
+    <script src="../../Themes/Scripts/FunctionJS.js"></script>
+    <script>
+        $(function () {
+            divresize('.div-body', 30);
+            treeAttrCss();
+            GetClickValue();
+        })
+        //初始化
+        var tableCode, tableRemark = '';
+        function GetClickValue() {
+            tableRemark = $('.collapsableselected').find('span').attr('tableRemark');
+            tableCode = $('.collapsableselected').find('span').html();
+            var path = 'DataBaseList.html?tableCode=' + tableCode + '&tableRemark=' + escape(tableRemark);
+            window.parent.frames["target_right"].location = path;
+            Loading(true);
+
+            $(".strTree li div").click(function () {
+                tableRemark = $('.collapsableselected').find('span').attr('tableRemark');
+                if (IsNullOrEmpty(tableRemark)) {
+                    tableCode = $('.collapsableselected').find('span').html();
+                    var path = 'DataBaseList.html?tableCode=' + tableCode + '&tableRemark=' + escape(tableRemark);
+                    window.parent.frames["target_right"].location = path;
+                    Loading(true);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <form method="post" action="http://223.86.105.239:802/CommonModule/DataBase/DataBaseTree.html" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE5MTMzMDMyODFkZOP1lUlI5K+cjrghbXbx4prc8r92W/RDkVy6byEB26p5" />
+</div>
+
+        <div class="btnbartitle">
+            <div>
+                对象资源管理器
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="div-body">
+            <ul class="black strTree">
+                <li>
+                    <div>
+                        <img src='../../Themes/images/16/db.png' style='vertical-align: middle;' alt='' />BPMS
+                    </div>
+                    <ul>
+                        <li><div class='collapsableselected'><img src="../../Themes/Images/16/table.png" /><span tableRemark='数据字典明细表'>BPMS_ItemDetails</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='IP黑名单'>BPMS_IPBlacklist</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='系统接口访问'>BPMS_InterfaceAccess</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='模块列表表头定义'>BPMS_TableColumns</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='附加属性信息实例'>BPMS_AppendPropertyInstance</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='操作按钮'>BPMS_Button</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='系统异常'>BPMS_Exception</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='数据权限存储表'>BPMS_DataPermission</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='组织机构、部门'>BPMS_Organization</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='附加属性信息'>BPMS_AppendProperty</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='用户、帐户'>BPMS_User</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='系统角色菜单关系'>BPMS_RoleMenu</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='用户账户部门关系'>BPMS_StaffOrganize</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='系统操作日志'>BPMS_SysLogs</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='系统角色'>BPMS_Roles</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='数据字典主表'>BPMS_Items</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='员工、职员'>BPMS_Employee</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='系统角色菜单按钮关系'>BPMS_RoleMenuButton</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='用户菜单关系'>BPMS_UserMenu</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='用户菜单按钮关系'>BPMS_UserMenuButton</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='系统操作日志明细'>BPMS_SysLogDetails</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='动态接口配置'>BASE_InterfaceManage</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='动态接口配置参数'>BASE_InterfaceManageDetails</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='模块（菜单导航）'>BPMS_SysMenu</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='菜单导航操作按钮关系表'>BPMS_SysMenuButton</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='用户帐户角色关系'>BPMS_UserRole</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='首页快捷功能'>BPMS_Shortcut</span></div></li><li><div class=''><img src="../../Themes/Images/16/table.png" /><span tableRemark='登录系统日志'>BPMS_SysLoginLog</span></div></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </form>
+</body>
+
+<!-- Mirrored from 223.86.105.239:802/CommonModule/DataBase/DataBaseTree.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 22 Nov 2013 04:36:07 GMT -->
+</html>

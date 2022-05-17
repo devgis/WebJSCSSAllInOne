@@ -1,0 +1,54 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from 223.86.105.239:802/CommonModule/Organize/OrganizeTree.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 22 Nov 2013 04:36:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	组织结构树
+</title><link href="../../Themes/Styles/style.css" rel="stylesheet" />
+    <script src="../../Themes/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="../../Themes/Scripts/TreeView/jquery.cookie.js"></script>
+    <link href="../../Themes/Scripts/TreeView/jquery.treeview.css" rel="stylesheet" />
+    <script src="../../Themes/Scripts/TreeView/jquery.treeview.js"></script>
+    <script src="../../Themes/Scripts/FunctionJS.js"></script>
+    <script>
+        $(function () {
+            divresize('.div-body', 30);
+            treeAttrCss();
+            GetClickValue();
+        })
+        function GetClickValue() {
+            $(".strTree li .divTree").click(function () {
+                var Category = $(this).attr('Category');
+                var OrganizationId = $(this).attr('id');
+                var FullName = $(this).find('span').html();
+                window.parent.frames["target_right"].OrganizeTree_Callback(Category, OrganizationId, FullName);
+            });
+        }
+    </script>
+</head>
+<body>
+    <form method="post" action="http://223.86.105.239:802/CommonModule/Organize/OrganizeTree.html" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE5MTMzMDMyODFkZFrMzfCdcKSd75sD++luziFBGGMPfNPD7dX27+rfwlWa" />
+</div>
+
+        <div class="btnbartitle">
+            <div>
+                组织机构
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="div-body">
+            <ul class="black strTree">
+                <li><div class='divTree' id='05e85693-14b0-4582-8063-8fbde85371f0'><img src='../../Themes/images/16/house.png' style='vertical-align: middle;' alt=''/><span>力软集团</span></div><ul><li title='公司'><div class='divTree' Category='公司' id='31b05701-60ef-405c-87ba-af47049e3f48'><img src='../../Themes/images/16/chart_organisation.png' style='vertical-align: middle;' alt=''/><span>上海分公司</span></div><ul><li title='部门'><div class='divTree' Category='部门' id='fa3c84c3-805a-48de-9588-dcdd64d4d9ab'><img src='../../Themes/images/16/wand.png' style='vertical-align: middle;' alt=''/><span>总裁办公室</span></div></li><li title='部门'><div class='divTree' Category='部门' id='6f9f996b-e549-425d-b7f1-01b24d886a2a'><img src='../../Themes/images/16/wand.png' style='vertical-align: middle;' alt=''/><span>人事部</span></div></li><li title='部门'><div class='divTree' Category='部门' id='01bf572a-f6d4-4a58-b29b-361238cd221e'><img src='../../Themes/images/16/wand.png' style='vertical-align: middle;' alt=''/><span>财务部</span></div></li><li title='部门'><div class='divTree' Category='部门' id='e3c0707a-a67a-4caf-a1cf-b9f18378100c'><img src='../../Themes/images/16/wand.png' style='vertical-align: middle;' alt=''/><span>市场部</span></div></li><li title='部门'><div class='divTree' Category='部门' id='f1c24b87-e007-4399-be49-fb1ed07c96d6'><img src='../../Themes/images/16/wand.png' style='vertical-align: middle;' alt=''/><span>行政部</span></div></li><li title='部门'><div class='divTree' Category='部门' id='ce65969e-0fa6-4697-acbc-d5bdc417fe99'><img src='../../Themes/images/16/wand.png' style='vertical-align: middle;' alt=''/><span>IT信息部</span></div><ul><li title='工作组'><div class='divTree' Category='工作组' id='3d7259f9-7991-4c58-8064-27f020bf0659'><img src='../../Themes/images/16/users.png' style='vertical-align: middle;' alt=''/><span>软件一组</span></div></li><li title='工作组'><div class='divTree' Category='工作组' id='75789b3b-acbd-4dba-a70f-d16d7d12c634'><img src='../../Themes/images/16/users.png' style='vertical-align: middle;' alt=''/><span>软件二组</span></div></li><li title='工作组'><div class='divTree' Category='工作组' id='28a1477b-9d4b-46c6-95fb-c56f1f160b9d'><img src='../../Themes/images/16/users.png' style='vertical-align: middle;' alt=''/><span>软件三组</span></div></li><li title='工作组'><div class='divTree' Category='工作组' id='f32d187b-31fe-404e-b4ba-1a5a577d896f'><img src='../../Themes/images/16/users.png' style='vertical-align: middle;' alt=''/><span>软件四组</span></div></li><li title='工作组'><div class='divTree' Category='工作组' id='99e0d915-a686-4922-9edd-c8f0ed6e79e9'><img src='../../Themes/images/16/users.png' style='vertical-align: middle;' alt=''/><span>技术研发组</span></div></li><li title='工作组'><div class='divTree' Category='工作组' id='d3f96507-1bda-4127-bda1-ca60c7f4ce72'><img src='../../Themes/images/16/users.png' style='vertical-align: middle;' alt=''/><span>技术测试组</span></div></li><li title='工作组'><div class='divTree' Category='工作组' id='b5221eb2-6b28-4104-b327-845d0021172b'><img src='../../Themes/images/16/users.png' style='vertical-align: middle;' alt=''/><span>技术工程组</span></div></li></ul></li><li title='部门'><div class='divTree' Category='部门' id='d8f15b36-9aef-4fac-9115-693017ae0b19'><img src='../../Themes/images/16/wand.png' style='vertical-align: middle;' alt=''/><span>采购部</span></div></li><li title='部门'><div class='divTree' Category='部门' id='00fdb9af-2f93-476a-8172-d987873f6697'><img src='../../Themes/images/16/wand.png' style='vertical-align: middle;' alt=''/><span>生产部</span></div><ul><li title='工作组'><div class='divTree' Category='工作组' id='4ec5c981-9f75-48c3-8217-03eb68db11b8'><img src='../../Themes/images/16/users.png' style='vertical-align: middle;' alt=''/><span>仓库组</span></div></li><li title='工作组'><div class='divTree' Category='工作组' id='75cdb572-da20-4e52-b727-be7c65ec4c72'><img src='../../Themes/images/16/users.png' style='vertical-align: middle;' alt=''/><span>作业组</span></div></li><li title='工作组'><div class='divTree' Category='工作组' id='2c5d2b38-2300-411d-979f-b65eb25846aa'><img src='../../Themes/images/16/users.png' style='vertical-align: middle;' alt=''/><span>检验组</span></div></li></ul></li><li title='部门'><div class='divTree' Category='部门' id='901659a9-e671-4b2f-b7fa-0d77144fb4c3'><img src='../../Themes/images/16/wand.png' style='vertical-align: middle;' alt=''/><span>销售部</span></div><ul><li title='工作组'><div class='divTree' Category='工作组' id='39764083-a0bd-4cd6-8ead-3ea689831ed3'><img src='../../Themes/images/16/users.png' style='vertical-align: middle;' alt=''/><span>大客户组</span></div></li><li title='工作组'><div class='divTree' Category='工作组' id='65a13460-75a1-4753-98f2-0d810f00bf43'><img src='../../Themes/images/16/users.png' style='vertical-align: middle;' alt=''/><span>销售一组</span></div></li><li title='工作组'><div class='divTree' Category='工作组' id='cd235612-a279-45df-aaa8-d25cbbbab87d'><img src='../../Themes/images/16/users.png' style='vertical-align: middle;' alt=''/><span>销售二组</span></div></li></ul></li></ul></li><li title='公司'><div class='divTree' Category='公司' id='c62c6939-74dc-4f67-ac5b-5ab1c2b0d85b'><img src='../../Themes/images/16/chart_organisation.png' style='vertical-align: middle;' alt=''/><span>福建分公司</span></div><ul><li title='部门'><div class='divTree' Category='部门' id='e572a3bd-8aba-4ddd-a794-a14303692df1'><img src='../../Themes/images/16/wand.png' style='vertical-align: middle;' alt=''/><span>财务部</span></div></li></ul></li><li title='公司'><div class='divTree' Category='公司' id='ef5e8b48-5ef4-4e07-bd70-d5c1e6414b20'><img src='../../Themes/images/16/chart_organisation.png' style='vertical-align: middle;' alt=''/><span>北京分公司</span></div></li></ul></li>
+            </ul>
+        </div>
+    </form>
+</body>
+
+<!-- Mirrored from 223.86.105.239:802/CommonModule/Organize/OrganizeTree.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 22 Nov 2013 04:36:05 GMT -->
+</html>

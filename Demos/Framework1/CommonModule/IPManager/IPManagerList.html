@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)http://223.86.105.239:802/CommonModule/IPManager/IPManagerList.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+	系统访问控制
+</title><link href="http://223.86.105.239:802/Themes/Styles/style.css" rel="stylesheet">
+    <script src="./IPManagerList_files/jquery-1.8.2.min.js"></script>
+    <script src="./IPManagerList_files/jquery-ui.min.js"></script>
+    <script src="./IPManagerList_files/pqgrid.min.js" charset="GBK"></script>
+    <link href="http://223.86.105.239:802/Themes/Scripts/PqGrid/pqgrid.min.css" rel="stylesheet">
+    <script src="./IPManagerList_files/FunctionJS.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            ListGrid();
+        });
+        /**加载表格函数**/
+        function ListGrid() {
+            //url：请求地址
+            var url = "IPManagerList.html?action=GridBindList";
+            //colM：表头名称
+            var colM = [
+                { title: "IP黑名单主键", hidden: true },
+                { title: "起始IP", width: 100, align: "center" },
+                { title: "结束IP", width: 100, align: "center" },
+                { title: "失效时间", width: 140, align: "center" },
+                {
+                    title: "规则类型", width: 100, align: "center",
+                    render: function (ui) {
+                        var rowData = ui.rowData;
+                        var value = rowData[4];
+                        if (value == '1')
+                            return "<label style=\"color:blue\">允许登录</label>";
+                        else
+                            return "<label style=\"color:red\">不允许登录</label>";
+                    }
+                },
+                {
+                    title: "有效", width: 60, align: "center",
+                    render: function (ui) {
+                        var rowData = ui.rowData;
+                        var value = rowData[5];
+                        if (value == '0')
+                            return "<img src='/Themes/Images/checknomark.gif'/>";
+                        else
+                            return "<img src='/Themes/Images/checkmark.gif'/>";
+                    }
+                },
+                { title: "描述", width: 500, align: "left" }
+            ];
+            //sort：要显示字段,数组对应
+            var sort = [
+                "IPBlacklistId",
+                "StartIp",
+                "EndIp",
+                "Failuretime",
+                "Category",
+                "Enabled",
+                "Description"
+            ];
+            PQLoadGridNoPage("#grid_paging", url, colM, sort)
+            $("#grid_paging").pqGrid({ topVisible: false });
+            pqGridResizefixed("#grid_paging", $(window).height() - 34, +15);
+        }
+        //新增
+        function add() {
+            var url = "/CommonModule/IPManager/IPManagerForm.html";
+            top.openDialog(url, 'IPManagerForm', 'IP访问规则 - 添加', 450, 330, 50, 50);
+        }
+        //编辑
+        function edit() {
+            var key = GetPqGridRowValue("#grid_paging", 0);
+            if (IsEditdata(key)) {
+                var url = "/CommonModule/IPManager/IPManagerForm.html?key=" + key;
+                top.openDialog(url, 'IPManagerForm', 'IP访问规则 - 编辑', 450, 330, 50, 50);
+            }
+        }
+        //删除
+        function Delete() {
+            var key = GetPqGridRowValue("#grid_paging", 0);
+            if (IsDelData(key)) {
+                var delparm = 'action=Delete&key=' + key;
+                delConfig('IPManagerList.html', delparm);
+            }
+        }
+        //刷新
+        function windowload() {
+            $("#grid_paging").pqGrid("refreshDataAndView");
+        }
+    </script>
+</head>
+<body>
+    <form method="post" action="./IPManagerList_files/IPManagerList.html" id="form1">
+<div class="aspNetHidden" style="display: none;">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJMzY1NTY5MzU2ZGSWetQPTiKtiztGoJQlWg+you0i1FkGBTxRZLyxpkF3lw==">
+</div>
+
+        
+
+<script type="text/javascript">
+    //右击菜单栏
+    
+</script>
+<div class="tools_bar"><a title="刷新当前页面" onclick="Replace();" class="tools_btn"><span><b style="background: url(&#39;/Themes/images/16/arrow_refresh.png&#39;) 50% 4px no-repeat;">刷新</b></span></a><div class="tools_separator"></div><a title="" onclick="add();" class="tools_btn"><span><b style="background: url(&#39;/Themes/images/16/application_add.png&#39;) 50% 4px no-repeat;">新增</b></span></a><a title="" onclick="edit();" class="tools_btn"><span><b style="background: url(&#39;/Themes/images/16/application_edit.png&#39;) 50% 4px no-repeat;">编辑</b></span></a><a title="" onclick="Delete();" class="tools_btn"><span><b style="background: url(&#39;/Themes/images/16/application_delete.png&#39;) 50% 4px no-repeat;">删除</b></span></a><div class="tools_separator"></div><a title="关闭当前窗口" onclick="ThisCloseTab();" class="tools_btn"><span><b style="background: url(&#39;/Themes/images/16/back.png&#39;) 50% 4px no-repeat;">离开</b></span></a></div>
+        <div id="grid_paging" style="margin-top: 1px; width: 1365px; height: 546px;" class="pq-grid ui-widget ui-widget-content ui-corner-all"><div class="pq-grid-top ui-widget-header ui-corner-top" style="display: none;">		<div class="pq-grid-title">&nbsp;</div></div>	<div class="pq-grid-inner" tabindex="0" style="height: 546px;"><div class="pq-grid-right"> 		<div class="pq-header-outer ui-widget-header" style="height: 27px;">			<span class="pq-grid-header ui-state-default" style="width: 51px; z-index: 1;"><table class="pq-grid-header-table" cellpadding="0" cellspacing="0"><tbody><tr><td style="width:51px;"></td><td style="width:101px;"></td><td style="width:101px;"></td><td style="width:141px;"></td><td style="width:101px;"></td><td style="width:61px;"></td><td style="width:501px;"></td></tr><tr><td class="pq-grid-number-col" rowspan="1">				<div class="pq-grid-header-table-div">&nbsp;</div></td><td pq-grid-col-indx="1" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">起始IP<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="2" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">结束IP<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="3" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">失效时间<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="4" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">规则类型<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="5" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">有效<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="6" class="pq-grid-col" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">描述<span class="pq-col-sort-icon">&nbsp;</span></div></td></tr></tbody></table></span><span class="pq-grid-header ui-state-default" style="left: 0px;"><table class="pq-grid-header-table" cellpadding="0" cellspacing="0"><tbody><tr><td style="width:51px;"></td><td style="width:101px;"></td><td style="width:101px;"></td><td style="width:141px;"></td><td style="width:101px;"></td><td style="width:61px;"></td><td style="width:501px;"></td></tr><tr><td class="pq-grid-number-col" rowspan="1">				<div class="pq-grid-header-table-div">&nbsp;</div></td><td pq-grid-col-indx="1" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">起始IP<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="2" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">结束IP<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="3" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">失效时间<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="4" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">规则类型<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="5" class="pq-grid-col pq-align-center" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">有效<span class="pq-col-sort-icon">&nbsp;</span></div></td><td pq-grid-col-indx="6" class="pq-grid-col" rowspan="1" colspan="1">				<div class="pq-grid-header-table-div">描述<span class="pq-col-sort-icon">&nbsp;</span></div></td></tr></tbody></table><div pq-grid-col-indx="1" class="pq-grid-col-resize-handle ui-draggable" style="left: 142px; height: 29px;">&nbsp;</div><div pq-grid-col-indx="2" class="pq-grid-col-resize-handle ui-draggable" style="left: 243px; height: 29px;">&nbsp;</div><div pq-grid-col-indx="3" class="pq-grid-col-resize-handle ui-draggable" style="left: 384px; height: 29px;">&nbsp;</div><div pq-grid-col-indx="4" class="pq-grid-col-resize-handle ui-draggable" style="left: 485px; height: 29px;">&nbsp;</div><div pq-grid-col-indx="5" class="pq-grid-col-resize-handle ui-draggable" style="left: 546px; height: 29px;">&nbsp;</div><div pq-grid-col-indx="6" class="pq-grid-col-resize-handle ui-draggable" style="left: 1047px; height: 29px;">&nbsp;</div></span>		</div>		<div class="pq-cont-right">		<div class="pq-cont" style="height: 518px;"><table class="pq-grid-table pq-grid-td-border-right pq-grid-td-border-bottom " cellpadding="0" cellspacing="0" style="margin-bottom: 0px;"><tbody><tr class="pq-row-hidden"><td style="width:51px;"></td><td style="width:101px;" pq-top-col-indx="1"></td><td style="width:101px;" pq-top-col-indx="2"></td><td style="width:141px;" pq-top-col-indx="3"></td><td style="width:101px;" pq-top-col-indx="4"></td><td style="width:61px;" pq-top-col-indx="5"></td><td style="width:501px;" pq-top-col-indx="6"></td></tr><tr pq-row-indx="0" class="pq-grid-row"><td style="width:50px;" class="pq-grid-number-cell ui-state-default">		<div class="pq-td-div">1</div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="1">			<div class="pq-td-div">192.168.0.1</div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="2">			<div class="pq-td-div">192.168.0.10</div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="3">			<div class="pq-td-div">2013/11/21 0:00:00</div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="4">			<div class="pq-td-div"><label style="color:red">不允许登录</label></div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="5">			<div class="pq-td-div"><img src="./IPManagerList_files/checkmark.gif"></div></td><td class="pq-grid-cell " style="" pq-col-indx="6">			<div class="pq-td-div">测试IP访问权限</div></td></tr><tr pq-row-indx="1" class="pq-grid-row"><td style="width:50px;" class="pq-grid-number-cell ui-state-default">		<div class="pq-td-div">2</div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="1">			<div class="pq-td-div">192.168.0.11</div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="2">			<div class="pq-td-div">192.168.0.20</div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="3">			<div class="pq-td-div">2013/11/14 0:00:00</div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="4">			<div class="pq-td-div"><label style="color:red">不允许登录</label></div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="5">			<div class="pq-td-div"><img src="./IPManagerList_files/checkmark.gif"></div></td><td class="pq-grid-cell " style="" pq-col-indx="6">			<div class="pq-td-div">&nbsp;</div></td></tr><tr pq-row-indx="2" class="pq-grid-row"><td style="width:50px;" class="pq-grid-number-cell ui-state-default">		<div class="pq-td-div">3</div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="1">			<div class="pq-td-div">192.168.0.21</div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="2">			<div class="pq-td-div">192.168.0.30</div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="3">			<div class="pq-td-div">2013/11/8 0:00:00</div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="4">			<div class="pq-td-div"><label style="color:red">不允许登录</label></div></td><td class="pq-grid-cell  pq-align-center" style="" pq-col-indx="5">			<div class="pq-td-div"><img src="./IPManagerList_files/checkmark.gif"></div></td><td class="pq-grid-cell " style="" pq-col-indx="6">			<div class="pq-td-div">&nbsp;</div></td></tr></tbody></table></div>		</div> 		</div><div class="pq-hvscroll-square ui-widget-content"></div><div class="pq-vscroll pq-scrollbar-vert" style="height: 501px; bottom: 17px; display: none;"><div class="top-btn pq-sb-btn"></div>			<div class="pq-sb-slider ui-draggable" style="height: 432px; top: 17px; display: none;">				<div class="vert-slider-top"></div>				<div class="vert-slider-bg" style="height: 209px;"></div>				<div class="vert-slider-center"></div>				<div class="vert-slider-bg" style="height: 209px;"></div>				<div class="vert-slider-bottom"></div>			</div>		<div class="bottom-btn pq-sb-btn"></div></div><div class="pq-hscroll pq-scrollbar-horiz" style="width: 1314px; right: 0px;"><div class="left-btn pq-sb-btn"></div>			<div class="pq-sb-slider pq-sb-slider-h ui-draggable" style="width: 1082px; left: 17px;">				<span class="horiz-slider-left"></span><span class="horiz-slider-bg" style="width: 534px;"></span><span class="horiz-slider-center"></span><span class="horiz-slider-bg" style="width: 534px;"></span><span class="horiz-slider-right"></span>			</div>		<div class="right-btn pq-sb-btn"></div></div></div>	<div class="pq-grid-bottom ui-corner-bottom" style="display: none;">	<div class="pq-grid-footer">&nbsp;</div>	</div></div>
+    </form>
+
+
+</body></html>

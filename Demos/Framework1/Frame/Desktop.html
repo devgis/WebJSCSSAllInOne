@@ -1,0 +1,104 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from 223.86.105.239:803/Frame/Desktop.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 22 Nov 2013 07:33:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	桌面菜单
+</title><link href="../Themes/Styles/desktop.css" rel="stylesheet" />
+    <script src="../Themes/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="Desktop.js"></script>
+    <script src="../Themes/Scripts/FunctionJS.js"></script>
+    <script>
+        $(function () {
+            document.onselectstart = function () { return false; }
+        })
+        //打开应用盒子
+        function openShortcut() {
+            var url = "/CommonModule/Shortcut/ShortcutList.html";
+            top.openDialog(url, 'ButtonForm', '应用盒子 - 桌面快捷', 750, 380, 50, 50);
+        }
+        //右击菜单
+        $("#Content").contextmenu({
+            items: [{
+                text: '刷新桌面',
+                icon: '/Themes/images/16/arrow_refresh.png',
+                action: function (target) {
+                    add();
+                }
+            }, {
+                text: '系统设置',
+                icon: '/Themes/images/16/advancedsettings2.png',
+                action: function (target) {
+                    edit();
+                }
+            }, {
+                text: '主题设置',
+                icon: '/Themes/images/16/paint.png',
+                action: function (target) {
+                    Delete();
+                }
+            }, , {
+                text: '使用指南',
+                icon: '/Themes/images/16/paint.png',
+                action: function (target) {
+                    Delete();
+                }
+            }, {
+                text: '关于我们',
+                icon: '/Themes/images/16/telephone_red.png',
+                action: function (target) {
+                    SetNewPassword();
+                }
+            }]
+        });
+        //右击菜单
+        $(".desk li").contextmenu({
+            items: [{
+                text: '移除',
+                icon: '/Themes/images/16/DeleteRed.png',
+                action: function (target) {
+                    getAjax("../CommonModule/Shortcut/ShortcutList.html", "action=Delete&key=" + target.id, function (data) {
+                        Replace();
+                    })
+                }
+            }]
+        });
+    </script>
+</head>
+<body>
+    <form method="post" action="http://223.86.105.239:803/Frame/Desktop.html" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTQxNjA5NzE3NWRkpVHKsueOLBHgCn45CdNTVmEyv51FsCzqBJ/YRx/dehc=" />
+</div>
+
+        <div id="Content">
+            <div id="control">
+                <table align="center" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td class="control-l"></td>
+                            <td class="control-c">
+                                <a class="btn active" href="javascript:void(0)"></a>
+                            </td>
+                            <td class="control-r">
+                                <a class="cfg" title="打开应用盒子" href="javascript: void(0)" onclick="openShortcut()"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="desktop">
+                <ul class="desk">
+                    <li id="7183d9c5-d48b-436a-9f62-7f30f5a02c5c" onclick="AddTabMenu('7183d9c5-d48b-436a-9f62-7f30f5a02c5c', '/CommonModule/Employee/EmployeeIndex.html?SystemId=7183d9c5-d48b-436a-9f62-7f30f5a02c5c', '职员管理', 'true');"><span class="icon"><img src="../Themes/Images/32/people.png"></span><a class="icon-text" href="javascript: void(0)"><span>职员管理</span></a></li><li id="599cbed1-45c4-4792-978c-d5bbcd2819e2" onclick="AddTabMenu('599cbed1-45c4-4792-978c-d5bbcd2819e2', '/CommonModule/User/UserList.html?SystemId=599cbed1-45c4-4792-978c-d5bbcd2819e2', '用户管理', 'true');"><span class="icon"><img src="../Themes/Images/32/4957_customers.png"></span><a class="icon-text" href="javascript: void(0)"><span>用户管理</span></a></li><li id="c108ef45-b8b6-493e-951a-9050706e2bba" onclick="AddTabMenu('c108ef45-b8b6-493e-951a-9050706e2bba', '/CommonModule/Organize/OrganizeList.html?SystemId=c108ef45-b8b6-493e-951a-9050706e2bba', '组织机构', 'true');"><span class="icon"><img src="../Themes/Images/32/chart_organisation.png"></span><a class="icon-text" href="javascript: void(0)"><span>组织机构</span></a></li><li id="7996cea4-5503-4807-87ba-d2da553c4341" onclick="AddTabMenu('7996cea4-5503-4807-87ba-d2da553c4341', '/CommonModule/Role/RoleIndex.html?SystemId=7996cea4-5503-4807-87ba-d2da553c4341', '角色管理', 'true');"><span class="icon"><img src="../Themes/Images/32/20131012030416621.png"></span><a class="icon-text" href="javascript: void(0)"><span>角色管理</span></a></li><li id="b863d076-37bb-45aa-8318-37942026921e" onclick="AddTabMenu('b863d076-37bb-45aa-8318-37942026921e', '/CommonModule/Module/ModuleList.html?SystemId=b863d076-37bb-45aa-8318-37942026921e', '模块管理', 'true');"><span class="icon"><img src="../Themes/Images/32/brick.png"></span><a class="icon-text" href="javascript: void(0)"><span>模块管理</span></a></li><li id="eb0c4d65-4757-4892-b2e9-35882704e592" onclick="AddTabMenu('eb0c4d65-4757-4892-b2e9-35882704e592', '/CommonModule/Button/ButtonList.html?SystemId=eb0c4d65-4757-4892-b2e9-35882704e592', '操作按钮', 'true');"><span class="icon"><img src="../Themes/Images/32/button.png"></span><a class="icon-text" href="javascript: void(0)"><span>操作按钮</span></a></li><li id="8104bfa2-fc85-4459-b533-7f58b7541155" onclick="AddTabMenu('8104bfa2-fc85-4459-b533-7f58b7541155', '/CommonModule/UserPermission/UserPermissionIndex.html?SystemId=8104bfa2-fc85-4459-b533-7f58b7541155', '用户权限控制', 'true');"><span class="icon"><img src="../Themes/Images/32/20131030111304984.png"></span><a class="icon-text" href="javascript: void(0)"><span>用户权限控制</span></a></li><li id="758429ec-3ae9-4a9e-a994-efe7c5395b4a" onclick="AddTabMenu('758429ec-3ae9-4a9e-a994-efe7c5395b4a', '/CommonModule/Dictionary/DictionaryIndex.html?SystemId=758429ec-3ae9-4a9e-a994-efe7c5395b4a', '辅助资料管理', 'true');"><span class="icon"><img src="../Themes/Images/32/document_library.png"></span><a class="icon-text" href="javascript: void(0)"><span>辅助资料管理</span></a></li><li id="5c5077f0-7703-4fee-927a-b765e1edf900" onclick="AddTabMenu('5c5077f0-7703-4fee-927a-b765e1edf900', '/CommonModule/Role/RoleIndexPermission.html?SystemId=5c5077f0-7703-4fee-927a-b765e1edf900', '角色权限控制', 'true');"><span class="icon"><img src="../Themes/Images/32/group_key.png"></span><a class="icon-text" href="javascript: void(0)"><span>角色权限控制</span></a></li><li id="d7a9f7e6-f004-4d39-b54c-0ad4215115a9" onclick="AddTabMenu('d7a9f7e6-f004-4d39-b54c-0ad4215115a9', '/CommonModule/Log/LoginLogList.html?SystemId=d7a9f7e6-f004-4d39-b54c-0ad4215115a9', '登录日志管理', 'true');"><span class="icon"><img src="../Themes/Images/32/report_key.png"></span><a class="icon-text" href="javascript: void(0)"><span>登录日志管理</span></a></li><li id="b29cabd8-ffb6-4d34-9d08-ee1dba2b5b6b" onclick="AddTabMenu('b29cabd8-ffb6-4d34-9d08-ee1dba2b5b6b', '/CommonModule/Log/LogList.html?SystemId=b29cabd8-ffb6-4d34-9d08-ee1dba2b5b6b', '操作日志管理', 'true');"><span class="icon"><img src="../Themes/Images/32/20130725112128475.png"></span><a class="icon-text" href="javascript: void(0)"><span>操作日志管理</span></a></li><li id="e84c0fca-d912-4f5c-a25e-d5765e33b0d2" onclick="AddTabMenu('e84c0fca-d912-4f5c-a25e-d5765e33b0d2', '/CommonModule/ExceptionLog/ExceptionIndex.html?SystemId=e84c0fca-d912-4f5c-a25e-d5765e33b0d2', '系统异常情况', 'true');"><span class="icon"><img src="../Themes/Images/32/Exception.png"></span><a class="icon-text" href="javascript: void(0)"><span>系统异常情况</span></a></li><li id="1af02b2d-bb66-4716-9ed5-ec3fcff9f5e2" onclick="AddTabMenu('1af02b2d-bb66-4716-9ed5-ec3fcff9f5e2', '/CommonModule/FlexibleForm/FlexibleFormIndex.html?SystemId=1af02b2d-bb66-4716-9ed5-ec3fcff9f5e2', '动态表单管理', 'true');"><span class="icon"><img src="../Themes/Images/32/application_form.png"></span><a class="icon-text" href="javascript: void(0)"><span>动态表单管理</span></a></li><li id="58e86c4c-8022-4d30-95d5-b3d0eedcc878" onclick="AddTabMenu('58e86c4c-8022-4d30-95d5-b3d0eedcc878', '/CommonModule/DataBase/DataBaseIndex.html?SystemId=58e86c4c-8022-4d30-95d5-b3d0eedcc878', '数据资源库', 'true');"><span class="icon"><img src="../Themes/Images/32/database_gear.png"></span><a class="icon-text" href="javascript: void(0)"><span>数据资源库</span></a></li><li id="5d896550-fde2-47fe-bb72-95cd5d3a2edb" onclick="AddTabMenu('5d896550-fde2-47fe-bb72-95cd5d3a2edb', '/CommonModule/DataBase/DataBaseManag.html?SystemId=5d896550-fde2-47fe-bb72-95cd5d3a2edb', '数据库管理', 'true');"><span class="icon"><img src="../Themes/Images/32/database_lightning.png"></span><a class="icon-text" href="javascript: void(0)"><span>数据库管理</span></a></li><li id="cef74b80-24a5-4d77-9ede-bbbc75cdb431" onclick="AddTabMenu('cef74b80-24a5-4d77-9ede-bbbc75cdb431', '/CommonModule/SystemInfo/ConfigForm.html?SystemId=cef74b80-24a5-4d77-9ede-bbbc75cdb431', '系统参数设置', 'true');"><span class="icon"><img src="../Themes/Images/32/4968_config.png"></span><a class="icon-text" href="javascript: void(0)"><span>系统参数设置</span></a></li><li id="ba0d11ba-9747-41fe-b5bc-e0f4469508bf" onclick="AddTabMenu('ba0d11ba-9747-41fe-b5bc-e0f4469508bf', '/CommonModule/SystemInfo/SystemInfoList.html?SystemId=ba0d11ba-9747-41fe-b5bc-e0f4469508bf', '系统信息', 'true');"><span class="icon"><img src="../Themes/Images/32/about.png"></span><a class="icon-text" href="javascript: void(0)"><span>系统信息</span></a></li><li id="2b057961-5ed1-4785-b808-1f366085f406" onclick="AddTabMenu('2b057961-5ed1-4785-b808-1f366085f406', '/CommonModule/IPManager/IPManagerList.html?SystemId=2b057961-5ed1-4785-b808-1f366085f406', '系统访问控制', 'true');"><span class="icon"><img src="../Themes/Images/32/424.png"></span><a class="icon-text" href="javascript: void(0)"><span>系统访问控制</span></a></li><li id="5477b88b-3393-4d39-ba2d-f219f486bd38" onclick="AddTabMenu('5477b88b-3393-4d39-ba2d-f219f486bd38', '/CommonModule/InterfaceManage/IAuthorizationList.html?SystemId=5477b88b-3393-4d39-ba2d-f219f486bd38', '系统接口控制', 'true');"><span class="icon"><img src="../Themes/Images/32/201310180320016982.png"></span><a class="icon-text" href="javascript: void(0)"><span>系统接口控制</span></a></li><li id="bd959bfa-797c-48ff-b72b-241c84cd03a8" onclick="AddTabMenu('bd959bfa-797c-48ff-b72b-241c84cd03a8', '/CommonModule/InterfaceManage/InterfaceManageList.html?SystemId=bd959bfa-797c-48ff-b72b-241c84cd03a8', '接口管理', 'true');"><span class="icon"><img src="../Themes/Images/32/disconnect.png"></span><a class="icon-text" href="javascript: void(0)"><span>接口管理</span></a></li><li id="20078172-7a2a-491b-91c3-97c25b3a58dc" onclick="AddTabMenu('20078172-7a2a-491b-91c3-97c25b3a58dc', '/CommonModule/SystemInfo/Individuation.html?SystemId=20078172-7a2a-491b-91c3-97c25b3a58dc', '个性设置', 'true');"><span class="icon"><img src="../Themes/Images/32/5030_drawings.png"></span><a class="icon-text" href="javascript: void(0)"><span>个性设置</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</body>
+
+<!-- Mirrored from 223.86.105.239:803/Frame/Desktop.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 22 Nov 2013 07:33:56 GMT -->
+</html>

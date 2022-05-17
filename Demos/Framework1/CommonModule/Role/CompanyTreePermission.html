@@ -1,0 +1,63 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from 223.86.105.239:802/CommonModule/Role/CompanyTreePermission.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 22 Nov 2013 04:36:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	角色权限-公司
+</title><link href="../../Themes/Styles/style.css" rel="stylesheet" />
+    <script src="../../Themes/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="../../Themes/Scripts/TreeView/jquery.cookie.js"></script>
+    <link href="../../Themes/Scripts/TreeView/jquery.treeview.css" rel="stylesheet" />
+    <script src="../../Themes/Scripts/TreeView/jquery.treeview.js"></script>
+    <script src="../../Themes/Scripts/FunctionJS.js"></script>
+    <script>
+        $(function () {
+            divresize('.div-body', 30);
+            treeAttrCss();
+            GetClickValue();
+        })
+        //初始化
+        var OrganizationId, FullName = '';
+        function GetClickValue() {
+            OrganizationId = $('.collapsableselected').attr('id');
+            FullName = $('.collapsableselected').find('span').html();
+            var path = 'RolePermission.html?OrganizationId=' + OrganizationId + '&FullName=' + escape(FullName);
+            window.parent.frames["target_right"].location = path;
+            Loading(true);
+
+            $(".strTree li div").click(function () {
+                ItemsId = $(this).attr('id');
+                FullName = $(this).find('span').html();
+                var path = 'RolePermission.html?OrganizationId=' + ItemsId + '&FullName=' + escape(FullName);
+                window.parent.frames["target_right"].location = path;
+                Loading(true);
+            });
+        }
+    </script>
+</head>
+<body>
+    <form method="post" action="http://223.86.105.239:802/CommonModule/Role/CompanyTreePermission.html" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE5MTMzMDMyODFkZFlwFUYBK26Ulng+dHdlVS0nrpMU9RMSLLfR9J0s8X1R" />
+</div>
+
+        <div class="btnbartitle">
+            <div>
+                公司
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="div-body">
+            <ul class="black strTree">
+                <li><div id='05e85693-14b0-4582-8063-8fbde85371f0'><img src='../../Themes/images/16/house.png' style='vertical-align: middle;' alt=''/><span>力软集团</span></div><ul><li><div class='collapsableselected' id='31b05701-60ef-405c-87ba-af47049e3f48'><img src='../../Themes/images/16/chart_organisation.png' style='vertical-align: middle;' alt=''/><span>上海分公司</span></div></li><li><div class='' id='c62c6939-74dc-4f67-ac5b-5ab1c2b0d85b'><img src='../../Themes/images/16/chart_organisation.png' style='vertical-align: middle;' alt=''/><span>福建分公司</span></div></li><li><div class='' id='ef5e8b48-5ef4-4e07-bd70-d5c1e6414b20'><img src='../../Themes/images/16/chart_organisation.png' style='vertical-align: middle;' alt=''/><span>北京分公司</span></div></li></ul></li>
+            </ul>
+        </div>
+    </form>
+</body>
+
+<!-- Mirrored from 223.86.105.239:802/CommonModule/Role/CompanyTreePermission.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 22 Nov 2013 04:36:06 GMT -->
+</html>
