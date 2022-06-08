@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="chrome=IE8">
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>Canvas Fill And Stroke Text Demo</title>
+<link rel="stylesheet" />
+	<script>
+		var ctx = null; // global variable 2d context
+		//var imageTexture = null;
+		window.onload = function() {
+			var canvas = document.getElementById("text_canvas");
+			console.log(canvas.parentNode.clientWidth);
+			canvas.width = canvas.parentNode.clientWidth;
+			//canvas.height = canvas.parentNode.clientHeight;
+			
+			if (!canvas.getContext) {
+			    console.log("Canvas not supported. Please install a HTML5 compatible browser.");
+			    return;
+			}
+			
+			// get 2D context of canvas and draw rectangel
+			ctx = canvas.getContext("2d");
+
+            //canvas.width = document.documentElement.clientWidth;
+            canvas.height = document.documentElement.clientHeight-120;
+
+            ctx.moveTo(0,0);
+            ctx.lineTo(200,100);
+            ctx.stroke();
+
+            ctx.fillRect(0, 0, 100, 100);
+            //实践表明在不设施strokeStyle下的默认strokeStyle=black
+            ctx.strokeRect(120, 0, 100, 100);
+
+            //设置纯色
+            ctx.fillStyle = "red";
+            ctx.strokeStyle = "blue";
+            ctx.fillRect(0, 120, 100, 100);
+            ctx.strokeRect(120, 120, 100, 100);
+
+            //设置透明度实践证明透明度值>0,<1值越低，越透明，值>=1时为纯色，值<=0时为完全透明
+            ctx.fillStyle = "rgba(255,0,0,0.2)";
+            ctx.strokeStyle = "rgba(255,0,0,0.2)";
+            ctx.fillRect(240,0 , 100, 100);
+            ctx.strokeRect(240, 120, 100, 100);
+
+			//ctx.fillStyle="black";
+			//ctx.fillRect(0, 0, canvas.width, canvas.height);
+			
+			// fill and stroke text
+			//ctx.font = '60pt Calibri';
+			//ctx.lineWidth = 3;
+			//ctx.strokeStyle = 'green';
+			//ctx.strokeText('Hello World!', 20, 100);
+			//ctx.fillStyle = 'red';
+			//ctx.fillText('Hello World!', 20, 100);
+			
+			// fill and stroke by pattern
+			//imageTexture = document.createElement('img');
+			//imageTexture.src = "../pattern.png";
+			//imageTexture.onload = loaded();
+
+            console.log("Done !");
+		}
+		
+		function loaded() {
+			// delay to image loaded
+			setTimeout(textureFill, 1000/30);
+		}
+		
+		function textureFill() {
+			// var woodfill = ctx.createPattern(imageTexture, "repeat-x");
+			// var woodfill = ctx.createPattern(imageTexture, "repeat-y");
+			// var woodfill = ctx.createPattern(imageTexture, "no-repeat");
+			var woodfill = ctx.createPattern(imageTexture, "repeat");
+			ctx.strokeStyle = woodfill;
+			ctx.strokeText('Hello World!', 20, 200);
+			
+			// fill rectangle
+			ctx.fillStyle = woodfill;
+			ctx.fillRect(60, 240, 260, 440);
+		}
+		
+	</script>
+</head>
+<body>
+	<h1>HTML5 Canvas Text Demo - By Gloomy Fish</h1>
+	<pre>Fill And Stroke</pre>
+	<div id="my_painter">
+		<canvas id="text_canvas"></canvas>
+	</div>
+</body>
+</html>
