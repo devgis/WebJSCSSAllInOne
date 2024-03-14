@@ -1,0 +1,49 @@
+
+html body #main{
+    height:98%;
+    width: 98%;
+    border: 0px;
+}
+#main{
+
+    position: relative;
+    border:1px solid #ccc;background: #f2f2f2;position: relative;
+}
+
+.retPro{
+    z-index:999;
+    position: absolute;
+    top:10px;
+    left:10px;
+    display: block;
+}
+
+#china_map{
+    width: 100%;
+    padding: 0px;
+    margin:0 auto;
+    position: absolute;
+    display: block;
+}
+
+#proe_map{
+    width: 100%;
+    height: 650px;
+    padding: 0px;
+    margin:0 auto;
+    position: absolute;
+    display: none;
+}
+
+#city_map{
+    width:100%;
+    height: 650px;
+    padding: 0px;
+    margin:0 auto;
+    position: absolute;
+    display: none;
+}
+
+#china_map,#proe_map,#city_map{
+    overflow:hidden
+}
