@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script type="text/javascript" src="dist/echarts.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<script type="text/javascript" src="dist/extension/echarts-gl.min.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<div id="chartmain" style="width:600px; height: 400px;"></div>
+		<script type="text/javascript">
+			function createNodes(widthCount, heightCount) {
+			var nodes = [];
+			for (var i = 0; i < widthCount; i++) {
+				for (var j = 0; j < heightCount; j++) {
+				nodes.push({
+					x: Math.random() * window.innerWidth,
+					y: Math.random() * window.innerHeight,
+					value: 1
+				});
+				}
+			}
+			return nodes;
+			}
+			function createEdges(widthCount, heightCount) {
+			var edges = [];
+			for (var i = 0; i < widthCount; i++) {
+				for (var j = 0; j < heightCount; j++) {
+				if (i < widthCount - 1) {
+					edges.push({
+					source: i + j * widthCount,
+					target: i + 1 + j * widthCount,
+					value: 1
+					});
+				}
+				if (j < heightCount - 1) {
+					edges.push({
+					source: i + j * widthCount,
+					target: i + (j + 1) * widthCount,
+					value: 1
+					});
+				}
+				}
+			}
+			return edges;
+			}
+			var nodes = createNodes(50, 50);
+			var edges = createEdges(50, 50);
+			option = {
+			series: [
+				{
+				type: 'graphGL',
+				nodes: nodes,
+				edges: edges,
+				itemStyle: {
+					color: 'rgba(255,255,255,0.8)'
+				},
+				lineStyle: {
+					color: 'rgba(255,255,255,0.8)',
+					width: 3
+				},
+				forceAtlas2: {
+					steps: 5,
+					jitterTolerence: 10,
+					edgeWeightInfluence: 4
+				}
+				}
+			]
+			};
+			//初始化echarts实例
+			var myChart = echarts.init(document.getElementById('chartmain'));
+	
+			//使用制定的配置项和数据显示图表
+			//myChart.setOption(option);
+			myChart.setOption({
+    grid3D: {},
+    xAxis3D: {},
+    yAxis3D: {},
+    zAxis3D: {},
+    series: [{
+        type: 'scatter3D',
+        symbolSize: 50,
+        data: [[-1, -1, -1], [0, 0, 0], [1, 1, 1]],
+        itemStyle: {
+            opacity: 1
+        }
+    }]
+})
+			window.addEventListener('resize', function () {
+				myChart.resize()
+			})
+		</script>
+	</body>
+</html>
