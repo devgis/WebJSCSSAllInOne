@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script type="text/javascript" src="js/echarts.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<title></title>
+	</head>
+	<body>
+		<div id="chartmain" style="width:600px; height: 400px;"></div>
+		<script type="text/javascript">
+			var option = {
+		backgroundColor: 'transparent',
+		grid: {
+			top: '6%',
+			bottom: '6%',
+			left: '23%',
+			right: '20%'
+		},
+		xAxis: {
+			type: 'value',
+			max: newValueTop6[newValueTop6.length - 1],
+			splitLine: {
+				show: false
+			},
+			axisLine: {
+				show: false
+			},
+			axisLabel: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			}
+		},
+		yAxis: [{
+			type: 'category',
+			data: newCategoryTop6,
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			axisLabel: {
+				margin: 10,
+				textStyle: {
+					color: '#ffffff',
+					fontSize: 11
+				}
+			}
+		}, {
+			type: 'category',
+			data: newValueTop6,
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			axisLabel: {
+				margin: 10,
+				textStyle: {
+					color: '#ffffff',
+					fontSize: 11
+				}
+			}
+		}],
+	
+		series: [{ //分隔
+			type: 'pictorialBar',
+			itemStyle: {
+				normal: {
+					color: function(params) {
+						return myColorTop8[params.dataIndex];
+					}
+				},
+			},
+			symbolRepeat: 'fixed',
+			symbolMargin: 2,
+			symbol: 'rect',
+			symbolClip: true,
+			symbolSize: [7, 15],
+			symbolPosition: 'start',
+			symbolOffset: [3, -1],
+			symbolBoundingData: newValueTop6[newValueTop6.length - 1],
+			data: newValueTop6
+		}]
+	};
+
+			//初始化echarts实例
+			var myChart = echarts.init(document.getElementById('chartmain'));
+	
+			//使用制定的配置项和数据显示图表
+			myChart.setOption(option);
+			window.addEventListener('resize', function () {
+				myChart.resize()
+			})
+		</script>
+	</body>
+</html>
